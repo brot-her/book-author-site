@@ -3,30 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page_title }} | {{ author.name }}</title>
+    <title>{{ page_title }} | {{ book.title }}</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
 </head>
 <body>
-    <header>
+    <header class="main-header">
         <div class="container">
-            <h1><a href="/">{{ author.name }}</a></h1>
-            <nav>
-                <a href="/">Главная</a>
-                <a href="/books">Книги</a>
-                <a href="/about">Об авторе</a>
-                <a href="/contact">Контакты</a>
-            </nav>
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <i class="fas fa-box-open"></i>
+                    <span>{{ book.title }}</span>
+                </a>
+
+                <nav class="main-nav">
+                    <a href="/" class="nav-link">
+                        <i class="fas fa-home"></i> Главная
+                    </a>
+                    <a href="/stories" class="nav-link">
+                        <i class="fas fa-book"></i> Все истории
+                    </a>
+                    <a href="/about" class="nav-link">
+                        <i class="fas fa-users"></i> Об авторе
+                    </a>
+                    <a href="#read" class="nav-link btn-read">
+                        <i class="fas fa-book-reader"></i> Читать
+                    </a>
+                </nav>
+
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="container">
+    <main>
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
+    <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2024 {{ author.name }}. Все права защищены.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>{{ book.title }}</h3>
+                    <p>Добрые сказки для детей и взрослых</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <a href="/">Главная</a>
+                    <a href="/stories">Истории</a>
+                    <a href="/about">Об авторе</a>
+                    <a href="{{ book.links[0].url }}" target="_blank">Читать книгу</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Для родителей</h4>
+                    <p>Книга подходит для чтения детям от 3 до 10 лет</p>
+                    <p>Все истории с хорошим концом</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; {{ current_year() }} {{ book.author }}. Иллюстрации: {{ book.illustrator }}. Все права защищены.</p>
+                <p class="footer-heart">Сделано с <i class="fas fa-heart"></i> для детей</p>
+            </div>
         </div>
     </footer>
+
+    <script src="/static/js/script.js"></script>
 </body>
 </html>

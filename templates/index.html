@@ -1,23 +1,153 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="hero">
-    <h2>Добро пожаловать на сайт автора</h2>
-    <p>{{ author.bio }}</p>
+<!-- Герой секция -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">{{ book.title }}</h1>
+                <p class="hero-subtitle">Добрые сказки для детей <i class="fas fa-heart"></i></p>
+                <p class="hero-author">Автор: <strong>{{ book.author }}</strong></p>
+                <p class="hero-illustrator">Художник: <strong>{{ book.illustrator }}</strong></p>
+
+                <div class="hero-actions">
+                    <a href="{{ book.links[0].url }}" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-book-open"></i> Читать книгу онлайн
+                    </a>
+                    <a href="#stories" class="btn btn-secondary">
+                        <i class="fas fa-list"></i> Все истории
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="{{ book.cover_image }}" alt="{{ book.title }}" class="book-cover-hero">
+                <div class="book-badge">Издана в {{ book.year }} году</div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section class="featured-books">
-    <h3>Последние книги</h3>
-    <div class="books-grid">
-        {% for book in books %}
-        <div class="book-card">
-            <h4>{{ book.title }}</h4>
-            <p>{{ book.year }} • {{ book.genre }}</p>
-            <p>{{ book.description[:100] }}...</p>
-            <a href="/book/{{ book.id }}" class="btn">Подробнее</a>
+<!-- О книге -->
+<section class="about-book">
+    <div class="container">
+        <h2 class="section-title">О книге</h2>
+
+        <div class="book-description-full">
+            <p>{{ book.description }}</p>
+
+            <div class="creative-process">
+                <h3><i class="fas fa-magic"></i> Как создавалась книга</h3>
+                <p>Дашины иллюстрации просто потрясающие: яркие, особенные, завораживающие.
+                Я помню как она "болела" этой книгой - прежде, чем начинала что-то рисовать,
+                делала выкройки из картона и моделировала фоны, сцены и героев.</p>
+
+                <p>"Ящик с ушами" наполнен добром и любовью. Так что это даже больше ящик с любовью,
+                чем с ушами. Хотя и уши там тоже торчат. Рыжие и бесстыжие. Но ни слова больше!
+                Прочитайте и сами убедитесь.</p>
+            </div>
         </div>
-        {% endfor %}
     </div>
-    <a href="/books" class="btn">Все книги →</a>
+</section>
+
+<!-- Все истории -->
+<section class="all-stories" id="stories">
+    <div class="container">
+        <h2 class="section-title">Все истории в книге</h2>
+        <p class="section-subtitle">5 добрых сказок с хорошим концом</p>
+
+        <div class="stories-grid">
+            {% for story in book.stories %}
+            <div class="story-card">
+                <div class="story-number">{{ loop.index }}</div>
+                <h3 class="story-title">{{ story.title }}</h3>
+                <p class="story-desc">{{ story.description }}</p>
+                <div class="story-preview">
+                    <div class="preview-image">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="stories-actions">
+            <a href="/stories" class="btn btn-large">
+                <i class="fas fa-scroll"></i> Подробнее о каждой истории
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Цитаты -->
+<section class="quotes-section">
+    <div class="container">
+        <h2 class="section-title">Цитаты о книге</h2>
+
+        <div class="quotes-grid">
+            {% for quote in book.quotes %}
+            <div class="quote-card">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="quote-text">{{ quote }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Персонажи -->
+<section class="characters-section">
+    <div class="container">
+        <h2 class="section-title">Герои книги</h2>
+
+        <div class="characters-list">
+            {% for character in book.characters %}
+            <div class="character-item">
+                <div class="character-icon">
+                    {% if "ящик" in character.lower() %}
+                    <i class="fas fa-box"></i>
+                    {% elif "пингвин" in character.lower() %}
+                    <i class="fas fa-fish"></i>
+                    {% elif "змей" in character.lower() %}
+                    <i class="fas fa-wind"></i>
+                    {% elif "знаки" in character.lower() %}
+                    <i class="fas fa-comma"></i>
+                    {% elif "братья" in character.lower() or "тимур" in character.lower() or "борислав" in character.lower() %}
+                    <i class="fas fa-child"></i>
+                    {% else %}
+                    <i class="fas fa-user"></i>
+                    {% endif %}
+                </div>
+                <span class="character-name">{{ character }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Призыв к действию -->
+<section class="cta-section" id="read">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Готовы прочитать эти добрые истории?</h2>
+            <p>Откройте книгу прямо сейчас и окунитесь в мир сказок!</p>
+
+            <div class="cta-buttons">
+                {% for link in book.links %}
+                <a href="{{ link.url }}" target="_blank" class="btn btn-cta">
+                    <i class="fas fa-{{ link.icon }}"></i> {{ link.name }}
+                </a>
+                {% endfor %}
+            </div>
+
+            <div class="cta-note">
+                <i class="fas fa-info-circle"></i>
+                <span>Книга полностью бесплатна для чтения</span>
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}
