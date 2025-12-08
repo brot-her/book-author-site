@@ -1,29 +1,38 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import os
-from pathlib import Path
+import sys
+
+# Настраиваем пути
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(current_dir)
 
 app = FastAPI()
 
-# Пути для Vercel
-BASE_DIR = Path(__file__).parent.parent
-TEMPLATES_DIR = BASE_DIR / "templates"
+# Подключаем статические файлы из public
+app.mount("/static", StaticFiles(directory=os.path.join(root_dir, "public")), name="static")
 
-templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
+# Подключаем шаблоны
+templates = Jinja2Templates(directory=os.path.join(root_dir, "templates"))
 
-# Импортируем данные
-import sys
-sys.path.append(str(BASE_DIR))
-from data.books import BOOKS, AUTHOR_INFO
+# Тестовые данные (позже заменим на импорт)
+BOOKS = [
+    {
+        "id": 1,
+        "title": "Первая книга",
+        "cover_image": "/static/images/book1.jpg",
+        "year": 2024,
+        "genre": "Роман",
+        "description": "Описание книги"
+    }
+]
 
-# Добавляем фильтр для года в шаблонах
-import datetime
-templates.env.filters["now"] = lambda: datetime.datetime.now()
-
-# Статические файлы - Vercel будет обслуживать их через routes
-from fastapi.staticfiles import StaticFiles
-app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
+AUTHOR_INFO = {
+    "name": "Имя Автора",
+    "bio": "Биография автора"
+}
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
@@ -38,7 +47,7 @@ async def home(request: Request):
     )
 
 @app.get("/books", response_class=HTMLResponse)
-async def all_books(request: Request):
+async def books_page(request: Request):
     return templates.TemplateResponse(
         "books.html",
         {
@@ -52,22 +61,22 @@ async def all_books(request: Request):
 @app.get("/book/{book_id}", response_class=HTMLResponse)
 async def book_detail(request: Request, book_id: int):
     book = next((b for b in BOOKS if b["id"] == book_id), None)
-    if not book:
+    if book:
+        return templates.TemplateResponse(
+            "book_detail.html",
+            {
+                "request": request,
+                "book": book,
+                "author": AUTHOR_INFO,
+                "page_title": book["title"]
+            }
+        )
+    else:
         return templates.TemplateResponse(
             "404.html",
-            {"request": request, "page_title": "Книга не найдена"},
+            {"request": request, "page_title": "Не найдено"},
             status_code=404
         )
-    
-    return templates.TemplateResponse(
-        "book_detail.html",
-        {
-            "request": request,
-            "book": book,
-            "author": AUTHOR_INFO,
-            "page_title": book["title"]
-        }
-    )
 
 @app.get("/about", response_class=HTMLResponse)
 async def about(request: Request):
@@ -80,18 +89,11 @@ async def about(request: Request):
         }
     )
 
-@app.get("/contact", response_class=HTMLResponse)
-async def contact(request: Request):
-    return templates.TemplateResponse(
-        "contact.html",
-        {
-            "request": request,
-            "author": AUTHOR_INFO,
-            "page_title": "Контакты"
-        }
-    )
+# Простой тестовый endpoint
+@app.get("/api/test")
+async def test():
+    return {"message": "API работает", "status": "ok"}
 
-# Для Vercel важно иметь этот обработчик
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

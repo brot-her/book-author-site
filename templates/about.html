@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} | {{ author.name }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>{{ author.name }}</h1>
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/books">Книги</a>
+            <a href="/about">Об авторе</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Об авторе</h2>
+        <div class="author-info">
+            <h3>{{ author.name }}</h3>
+            <p>{{ author.bio }}</p>
+        </div>
+    </main>
+</body>
+</html>

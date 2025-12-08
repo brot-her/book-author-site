@@ -1,45 +1,41 @@
-{% extends "base.html" %}
-
-{% block content %}
-<section class="hero">
-    <div class="container">
-        <h1>Добро пожаловать на сайт {{ author.name }}</h1>
-        <p class="subtitle">Автор книг о жизни, любви и приключениях</p>
-        <a href="/books" class="btn btn-primary">Смотреть все книги</a>
-    </div>
-</section>
-
-<section class="featured-books">
-    <div class="container">
-        <h2>Последние книги</h2>
-        <div class="books-grid">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} | {{ author.name }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>{{ author.name }}</h1>
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/books">Книги</a>
+            <a href="/about">Об авторе</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Добро пожаловать!</h2>
+        <p>Это сайт автора {{ author.name }}</p>
+        
+        {% if books %}
+        <div class="books">
+            <h3>Последние книги:</h3>
             {% for book in books %}
-            <div class="book-card">
-                <a href="/book/{{ book.id }}">
-                    <img src="{{ book.cover_image }}" alt="{{ book.title }}" class="book-cover">
-                    <h3>{{ book.title }}</h3>
-                    <p class="book-year">{{ book.year }} • {{ book.genre }}</p>
-                </a>
+            <div class="book">
+                <h4>{{ book.title }}</h4>
+                <p>{{ book.year }} • {{ book.genre }}</p>
+                <a href="/book/{{ book.id }}">Подробнее</a>
             </div>
             {% endfor %}
         </div>
-    </div>
-</section>
-
-<section class="author-preview">
-    <div class="container">
-        <div class="author-content">
-            <div class="author-text">
-                <h2>Немного об авторе</h2>
-                <p>{{ author.bio[:200] }}...</p>
-                <a href="/about" class="btn btn-secondary">Читать подробнее</a>
-            </div>
-            {% if author.photo %}
-            <div class="author-image">
-                <img src="{{ author.photo }}" alt="{{ author.name }}">
-            </div>
-            {% endif %}
-        </div>
-    </div>
-</section>
-{% endblock %}
+        {% endif %}
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 {{ author.name }}</p>
+    </footer>
+</body>
+</html>

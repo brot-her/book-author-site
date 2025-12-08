@@ -1,26 +1,39 @@
-{% extends "base.html" %}
-
-{% block content %}
-<section class="books-page">
-    <div class="container">
-        <h1>Все книги</h1>
-        <p class="page-description">Полная коллекция произведений автора</p>
-
-        <div class="books-grid">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} | {{ author.name }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>{{ author.name }}</h1>
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/books">Книги</a>
+            <a href="/about">Об авторе</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Все книги</h2>
+        
+        {% if books %}
+        <div class="books-list">
             {% for book in books %}
-            <div class="book-card">
-                <a href="/book/{{ book.id }}">
-                    <img src="{{ book.cover_image }}" alt="{{ book.title }}" class="book-cover">
-                    <div class="book-info">
-                        <h3>{{ book.title }}</h3>
-                        <p class="book-meta">{{ book.year }} • {{ book.genre }}</p>
-                        <p class="book-description">{{ book.description[:100] }}...</p>
-                        <span class="read-more">Подробнее <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
+            <div class="book-item">
+                <h3>{{ book.title }}</h3>
+                <p><strong>Год:</strong> {{ book.year }}</p>
+                <p><strong>Жанр:</strong> {{ book.genre }}</p>
+                <p>{{ book.description }}</p>
+                <a href="/book/{{ book.id }}">Читать подробнее</a>
             </div>
             {% endfor %}
         </div>
-    </div>
-</section>
-{% endblock %}
+        {% else %}
+        <p>Книги пока не добавлены.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

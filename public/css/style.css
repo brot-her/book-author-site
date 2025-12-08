@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background: #f4f4f4;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+nav {
+    margin-top: 1rem;
+}
+
+nav a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+nav a:hover {
+    background: #ddd;
+}
+
+.books-list, .books {
+    display: grid;
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.book, .book-item {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.book h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: #666;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
