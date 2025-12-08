@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="not-found">
-    <div class="container" style="text-align: center; padding: 4rem 0;">
-        <h1>404 - Книга не найдена</h1>
-        <p>Извините, такой книги не существует в нашей библиотеке.</p>
-        <a href="/books" class="btn btn-primary">Посмотреть все книги</a>
-    </div>
-</section>
-{% endblock %}git remote -v
+<div class="error-page">
+    <h2>404 - Страница не найдена</h2>
+    <p>Извините, запрашиваемая страница не существует.</p>
+    <a href="/" class="btn">Вернуться на главную</a>
+</div>
+{% endblock %}

@@ -1,41 +1,23 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page_title }} | {{ author.name }}</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <header>
-        <h1>{{ author.name }}</h1>
-        <nav>
-            <a href="/">Главная</a>
-            <a href="/books">Книги</a>
-            <a href="/about">Об авторе</a>
-        </nav>
-    </header>
-    
-    <main>
-        <h2>Добро пожаловать!</h2>
-        <p>Это сайт автора {{ author.name }}</p>
-        
-        {% if books %}
-        <div class="books">
-            <h3>Последние книги:</h3>
-            {% for book in books %}
-            <div class="book">
-                <h4>{{ book.title }}</h4>
-                <p>{{ book.year }} • {{ book.genre }}</p>
-                <a href="/book/{{ book.id }}">Подробнее</a>
-            </div>
-            {% endfor %}
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <h2>Добро пожаловать на сайт автора</h2>
+    <p>{{ author.bio }}</p>
+</section>
+
+<section class="featured-books">
+    <h3>Последние книги</h3>
+    <div class="books-grid">
+        {% for book in books %}
+        <div class="book-card">
+            <h4>{{ book.title }}</h4>
+            <p>{{ book.year }} • {{ book.genre }}</p>
+            <p>{{ book.description[:100] }}...</p>
+            <a href="/book/{{ book.id }}" class="btn">Подробнее</a>
         </div>
-        {% endif %}
-    </main>
-    
-    <footer>
-        <p>&copy; 2024 {{ author.name }}</p>
-    </footer>
-</body>
-</html>
+        {% endfor %}
+    </div>
+    <a href="/books" class="btn">Все книги →</a>
+</section>
+{% endblock %}

@@ -5,48 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page_title }} | {{ author.name }}</title>
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Шапка сайта -->
     <header>
-        <nav class="navbar">
-            <div class="container">
-                <a href="/" class="logo">{{ author.name }}</a>
-                <ul class="nav-menu">
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/books">Все книги</a></li>
-                    <li><a href="/about">Об авторе</a></li>
-                    <li><a href="/contact">Контакты</a></li>
-                </ul>
-                <button class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </nav>
+        <div class="container">
+            <h1><a href="/">{{ author.name }}</a></h1>
+            <nav>
+                <a href="/">Главная</a>
+                <a href="/books">Книги</a>
+                <a href="/about">Об авторе</a>
+                <a href="/contact">Контакты</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- Основной контент -->
-    <main>
+    <main class="container">
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Подвал сайта -->
     <footer>
         <div class="container">
-            <p>&copy; {{ now().year }} {{ author.name }}. Все права защищены.</p>
-            <div class="social-links">
-                {% if author.contact.social %}
-                    {% for name, url in author.contact.social.items() %}
-                        <a href="{{ url }}" target="_blank" class="social-link">
-                            <i class="fab fa-{{ name }}"></i>
-                        </a>
-                    {% endfor %}
-                {% endif %}
-            </div>
+            <p>&copy; 2024 {{ author.name }}. Все права защищены.</p>
         </div>
     </footer>
-
-    <script src="/static/js/script.js"></script>
 </body>
 </html>
