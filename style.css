@@ -1,14 +1,14 @@
-/* Основные стили */
+/* Основные стили - ЦВЕТА КАК В СТАРОМ САЙТЕ */
 :root {
-    --primary-color: #4a6fa5;
-    --secondary-color: #166088;
-    --accent-color: #ff8a65;
-    --light-color: #f8f9fa;
-    --dark-color: #2c3e50;
-    --text-color: #333;
-    --gray-color: #6c757d;
+    --primary-color: #8B4513; /* Коричневый как книга */
+    --secondary-color: #654321; /* Темный коричневый */
+    --accent-color: #D2691E; /* Оранжево-коричневый */
+    --light-color: #FAF3E0; /* Светлый кремовый фон */
+    --dark-color: #5D4037; /* Темный коричневый */
+    --text-color: #3E2723; /* Цвет текста */
+    --gray-color: #795548; /* Серо-коричневый */
 
-    --shadow: 0 5px 15px rgba(0,0,0,0.08);
+    --shadow: 0 5px 15px rgba(91, 70, 54, 0.15);
     --radius: 10px;
     --transition: all 0.3s ease;
 }
@@ -24,6 +24,7 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--light-color);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23FAF3E0"/><path d="M0,0 L100,100" stroke="%23E8DCC0" stroke-width="0.5"/><path d="M100,0 L0,100" stroke="%23E8DCC0" stroke-width="0.5"/></svg>');
 }
 
 .container {
@@ -34,11 +35,12 @@ body {
 
 /* Шапка */
 .header {
-    background-color: white;
+    background-color: #FFF8E1;
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 3px solid var(--primary-color);
 }
 
 .header-content {
@@ -79,22 +81,26 @@ body {
     border-radius: var(--radius);
     transition: var(--transition);
     position: relative;
+    border: 1px solid transparent;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--primary-color);
-    background-color: rgba(74, 111, 165, 0.1);
+    color: var(--accent-color);
+    background-color: rgba(139, 69, 19, 0.1);
+    border: 1px solid rgba(139, 69, 19, 0.2);
 }
 
 .btn-contact {
-    background-color: var(--accent-color);
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
     color: white !important;
+    box-shadow: 0 3px 10px rgba(210, 105, 30, 0.3);
 }
 
 .btn-contact:hover {
-    background-color: #ff7043;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
 }
 
 .menu-toggle {
@@ -130,7 +136,7 @@ body {
     top: 100%;
     left: 0;
     min-width: 200px;
-    background: white;
+    background: #FFF8E1;
     box-shadow: var(--shadow);
     border-radius: var(--radius);
     padding: 0.5rem 0;
@@ -139,6 +145,7 @@ body {
     transform: translateY(10px);
     transition: var(--transition);
     z-index: 1000;
+    border: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .dropdown:hover .dropdown-menu {
@@ -155,11 +162,13 @@ body {
     text-decoration: none;
     color: var(--dark-color);
     transition: var(--transition);
+    border-left: 3px solid transparent;
 }
 
 .dropdown-item:hover {
-    background-color: var(--light-color);
-    color: var(--primary-color);
+    background-color: rgba(139, 69, 19, 0.05);
+    color: var(--accent-color);
+    border-left: 3px solid var(--accent-color);
 }
 
 .dropdown-item i {
@@ -178,6 +187,21 @@ body {
     color: var(--dark-color);
     margin-bottom: 2rem;
     text-align: center;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 10px;
+}
+
+.hero h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
 }
 
 .hero-content {
@@ -191,26 +215,32 @@ body {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     line-height: 1.8;
+    text-align: justify;
 }
 
 .lead {
     font-size: 1.3rem !important;
     font-weight: 600;
     color: var(--secondary-color);
+    font-style: italic;
+    padding-left: 1.5rem;
+    border-left: 4px solid var(--accent-color);
 }
 
 .highlight {
-    background-color: #fff8e1;
+    background-color: #FFF3E0;
     padding: 1.5rem;
     border-radius: var(--radius);
-    border-left: 4px solid var(--accent-color);
+    border: 1px solid rgba(210, 105, 30, 0.2);
     font-style: italic;
+    box-shadow: 0 3px 10px rgba(139, 69, 19, 0.1);
 }
 
 /* Книжная стопка */
 .book-stack {
     position: relative;
     height: 300px;
+    perspective: 1000px;
 }
 
 .book {
@@ -219,33 +249,37 @@ body {
     border-radius: 5px;
     box-shadow: var(--shadow);
     border: 1px solid #e0e0e0;
+    transform-style: preserve-3d;
 }
 
 .book-1 {
     width: 200px;
     height: 280px;
-    background: linear-gradient(135deg, #4a6fa5, #166088);
-    transform: rotate(-5deg);
+    background: linear-gradient(135deg, #8B4513, #654321);
+    transform: rotate(-8deg) translateZ(10px);
     left: 0;
     top: 0;
+    border: 2px solid #654321;
 }
 
 .book-2 {
     width: 200px;
     height: 280px;
-    background: linear-gradient(135deg, #ff8a65, #ff7043);
-    transform: rotate(2deg);
+    background: linear-gradient(135deg, #D2691E, #A0522D);
+    transform: rotate(3deg) translateZ(5px);
     left: 40px;
     top: 10px;
+    border: 2px solid #A0522D;
 }
 
 .book-3 {
     width: 200px;
     height: 280px;
-    background: linear-gradient(135deg, #4db6ac, #26a69a);
-    transform: rotate(8deg);
+    background: linear-gradient(135deg, #BC8F8F, #8B4513);
+    transform: rotate(12deg) translateZ(0);
     left: 80px;
     top: 5px;
+    border: 2px solid #8B4513;
 }
 
 /* Категории книг */
@@ -255,6 +289,19 @@ body {
     color: var(--dark-color);
     text-align: center;
     margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
 }
 
 .book-categories {
@@ -268,16 +315,29 @@ body {
 }
 
 .category-card {
-    background: white;
+    background: #FFF8E1;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     overflow: hidden;
     transition: var(--transition);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--accent-color);
 }
 
 .category-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(139, 69, 19, 0.15);
 }
 
 .category-header {
@@ -287,15 +347,29 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-header:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1));
 }
 
 .category-icon {
     font-size: 1.5rem;
+    z-index: 1;
 }
 
 .category-header h3 {
     font-size: 1.3rem;
     margin: 0;
+    z-index: 1;
 }
 
 .category-body {
@@ -313,7 +387,7 @@ body {
 }
 
 .book-item {
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(139, 69, 19, 0.1);
     padding: 1rem 0;
 }
 
@@ -325,6 +399,7 @@ body {
 .book-item h4 {
     color: var(--dark-color);
     margin-bottom: 0.3rem;
+    font-family: 'Merriweather', serif;
 }
 
 .book-item p {
@@ -337,18 +412,21 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
     color: white;
     text-decoration: none;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.9rem;
     transition: var(--transition);
+    border: none;
+    cursor: pointer;
 }
 
 .btn-small:hover {
-    background-color: var(--secondary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(139, 69, 19, 0.3);
 }
 
 /* Списки */
@@ -359,16 +437,16 @@ body {
 
 .exclusive-list li {
     padding: 0.5rem 0;
-    border-bottom: 1px dashed #eee;
+    border-bottom: 1px dashed rgba(139, 69, 19, 0.2);
     position: relative;
     padding-left: 1.5rem;
 }
 
 .exclusive-list li:before {
-    content: "✓";
+    content: "📖";
     position: absolute;
     left: 0;
-    color: var(--primary-color);
+    color: var(--accent-color);
     font-weight: bold;
 }
 
@@ -384,15 +462,16 @@ body {
 .progress-bar {
     width: 100%;
     height: 10px;
-    background-color: #e0e0e0;
+    background-color: #E0D7CC;
     border-radius: 5px;
     margin: 0.5rem 0;
     overflow: hidden;
+    border: 1px solid rgba(139, 69, 19, 0.2);
 }
 
 .progress {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent-color), #ff7043);
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
     border-radius: 5px;
 }
 
@@ -406,23 +485,25 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background-color: #f8f9fa;
+    background-color: rgba(139, 69, 19, 0.05);
     padding: 1rem;
     border-radius: var(--radius);
     margin-top: 1rem;
+    border: 1px dashed rgba(139, 69, 19, 0.3);
 }
 
 .archive-note i {
     font-size: 1.5rem;
-    color: var(--gray-color);
+    color: var(--accent-color);
 }
 
 /* Услуги */
 .services {
     padding: 3rem 0;
-    background-color: #f8f9fa;
+    background-color: #FFF3E0;
     margin: 2rem 0;
     border-radius: var(--radius);
+    border: 1px solid rgba(210, 105, 30, 0.1);
 }
 
 .services-grid {
@@ -433,16 +514,36 @@ body {
 }
 
 .service-card {
-    background: white;
+    background: #FFF8E1;
     padding: 2rem;
     border-radius: var(--radius);
     text-align: center;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.service-card:hover:before {
+    transform: scaleX(1);
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(139, 69, 19, 0.15);
 }
 
 .service-icon {
@@ -454,25 +555,27 @@ body {
 .service-card h3 {
     color: var(--dark-color);
     margin-bottom: 0.5rem;
+    font-family: 'Merriweather', serif;
 }
 
 .services-note {
     text-align: center;
     color: var(--gray-color);
     padding-top: 1rem;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(139, 69, 19, 0.2);
 }
 
-/* Об авторе */
+/* Об авторе - БЕЗ СТАТИСТИКИ */
 .about {
     padding: 3rem 0;
 }
 
 .about-content {
-    background: white;
+    background: #FFF8E1;
     border-radius: var(--radius);
     padding: 2rem;
     box-shadow: var(--shadow);
+    border: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .author-info {
@@ -481,7 +584,7 @@ body {
     gap: 2rem;
     margin-bottom: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(139, 69, 19, 0.2);
 }
 
 .author-avatar {
@@ -493,46 +596,29 @@ body {
     font-size: 1.8rem;
     color: var(--dark-color);
     margin-bottom: 0.5rem;
+    font-family: 'Merriweather', serif;
 }
 
 .author-tagline {
-    color: var(--gray-color);
+    color: var(--accent-color);
     font-style: italic;
     margin-bottom: 1rem;
-}
-
-.author-stats {
-    display: flex;
-    gap: 2rem;
-}
-
-.stat {
-    text-align: center;
-}
-
-.stat-number {
-    display: block;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    color: var(--gray-color);
+    font-weight: 600;
 }
 
 .author-bio p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     line-height: 1.8;
+    text-align: justify;
 }
 
 /* Контакты */
 .contact {
     padding: 3rem 0;
-    background: linear-gradient(135deg, #f8f9fa, white);
+    background: linear-gradient(135deg, #FFF3E0, #FFF8E1);
     border-radius: var(--radius);
     margin-bottom: 2rem;
+    border: 1px solid rgba(210, 105, 30, 0.1);
 }
 
 .contact-content {
@@ -551,10 +637,17 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: white;
+    background: #FFF8E1;
     padding: 1.5rem;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.15);
 }
 
 .contact-item i {
@@ -565,14 +658,16 @@ body {
 .contact-item h4 {
     color: var(--dark-color);
     margin-bottom: 0.3rem;
+    font-family: 'Merriweather', serif;
 }
 
 .contact-note {
     text-align: center;
     padding: 1.5rem;
-    background: white;
+    background: #FFF8E1;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    border: 1px dashed rgba(210, 105, 30, 0.3);
 }
 
 .contact-note i {
@@ -582,9 +677,10 @@ body {
 
 /* Подвал */
 .footer {
-    background-color: var(--dark-color);
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
     color: white;
     padding: 3rem 0 1rem;
+    border-top: 3px solid var(--accent-color);
 }
 
 .footer-content {
@@ -598,36 +694,56 @@ body {
 .footer-section h4 {
     color: white;
     margin-bottom: 1rem;
+    font-family: 'Merriweather', serif;
 }
 
 .footer-section p {
-    color: #bdc3c7;
+    color: #E0D7CC;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
 }
 
 .footer-section a {
     display: block;
-    color: #bdc3c7;
+    color: #E0D7CC;
     text-decoration: none;
     margin-bottom: 0.5rem;
     transition: var(--transition);
+    position: relative;
+    padding-left: 0;
 }
 
 .footer-section a:hover {
-    color: white;
+    color: var(--accent-color);
+    padding-left: 5px;
 }
 
 .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 1.5rem;
     text-align: center;
-    color: #bdc3c7;
+    color: #E0D7CC;
 }
 
 .footer-heart {
-    color: #ff8a80;
+    color: #FF8A80;
     margin-top: 0.5rem;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated {
+    animation: fadeInUp 0.6s ease forwards;
 }
 
 /* Адаптивность */
@@ -649,10 +765,11 @@ body {
         top: 100%;
         left: 0;
         right: 0;
-        background: white;
+        background: #FFF8E1;
         flex-direction: column;
         padding: 1rem;
         box-shadow: var(--shadow);
+        border: 1px solid rgba(139, 69, 19, 0.1);
     }
 
     .main-nav.active {
@@ -671,6 +788,7 @@ body {
         box-shadow: none;
         padding-left: 1rem;
         display: none;
+        background: rgba(139, 69, 19, 0.05);
     }
 
     .dropdown.active .dropdown-menu {
@@ -696,5 +814,9 @@ body {
 
     .section-title {
         font-size: 1.5rem;
+    }
+
+    .hero-text p {
+        text-align: left;
     }
 }

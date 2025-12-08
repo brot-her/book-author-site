@@ -53,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                     }
 
+                    // Добавляем анимацию к целевой секции
+                    targetElement.classList.add('animated');
+
                     // Прокрутка
                     window.scrollTo({
                         top: targetElement.offsetTop - 100,
@@ -86,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Инициализация
+    // Инициализация подсветки
     highlightNavLink();
     window.addEventListener('scroll', highlightNavLink);
 
@@ -105,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
 
     // Наблюдаем за элементами
-    document.querySelectorAll('.category-card, .service-card, .contact-item').forEach(el => {
+    document.querySelectorAll('.category-card, .service-card, .contact-item, .hero, .about-content').forEach(el => {
         observer.observe(el);
     });
 
@@ -115,16 +118,22 @@ document.addEventListener('DOMContentLoaded', function() {
         el.textContent = new Date().getFullYear();
     });
 
-    // Имитация загрузки прогресса
-    const progressBars = document.querySelectorAll('.progress');
-    progressBars.forEach(bar => {
-        const width = bar.style.width;
-        bar.style.width = '0';
+    // Анимация книг
+    const books = document.querySelectorAll('.book');
+    if (books.length > 0) {
         setTimeout(() => {
-            bar.style.transition = 'width 2s ease';
-            bar.style.width = width;
-        }, 500);
-    });
+            books.forEach((book, index) => {
+                setTimeout(() => {
+                    book.style.transition = 'transform 0.5s ease';
+                    book.style.transform = book.style.transform.replace(/translateZ\([^)]*\)/, 'translateZ(20px)');
 
-    console.log('Сайт загружен и готов к работе!');
+                    setTimeout(() => {
+                        book.style.transform = book.style.transform.replace(/translateZ\([^)]*\)/, 'translateZ(10px)');
+                    }, 300);
+                }, index * 200);
+            });
+        }, 1000);
+    }
+
+    console.log('Сайт загружен! Авторские книги ждут своих читателей 📚');
 });
