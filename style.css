@@ -1,0 +1,250 @@
+/* Базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fffef7;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка */
+.header {
+    background: #ff9a76;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Главный заголовок */
+.hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: #5d4037;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #8d6e63;
+    font-size: 1.2rem;
+}
+
+/* Информация о книге */
+.book-info {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+.book-header {
+    border-bottom: 2px solid #ffecb3;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.book-header h2 {
+    color: #5d4037;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.book-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.book-meta p {
+    margin-bottom: 0.5rem;
+}
+
+/* Кнопка чтения */
+.btn-read {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #4db6ac;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-read:hover {
+    background: #26a69a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(77, 182, 172, 0.3);
+}
+
+/* Описание книги */
+.book-description h3,
+.stories-section h3 {
+    color: #5d4037;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.book-description p {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+/* Список историй */
+.stories-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.story-title {
+    background: #fff8e1;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    color: #5d4037;
+    border: 1px solid #ffecb3;
+}
+
+/* Об авторе */
+.author-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+.author-section h2 {
+    color: #5d4037;
+    margin-bottom: 1rem;
+}
+
+.author-content p {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+/* Финальный призыв */
+.final-cta {
+    text-align: center;
+    background: linear-gradient(135deg, #ffecb3 0%, #ffcc80 100%);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.final-cta h2 {
+    color: #5d4037;
+    margin-bottom: 1rem;
+}
+
+.btn-read-large {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #ff7043;
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    transition: all 0.3s;
+}
+
+.btn-read-large:hover {
+    background: #f4511e;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 112, 67, 0.3);
+}
+
+.note {
+    color: #5d4037;
+    margin-top: 1rem;
+}
+
+/* Подвал */
+.footer {
+    background: #5d4037;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+}
+
+.contact {
+    color: #ffccbc;
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .book-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .stories-list {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-read,
+    .btn-read-large {
+        width: 100%;
+        justify-content: center;
+    }
+}
