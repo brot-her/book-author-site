@@ -37,24 +37,77 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Плавная прокрутка
+    // Переключение между категориями
+    const categoryLinks = document.querySelectorAll('.category-link');
+    const categoryContents = document.querySelectorAll('.category-content');
+
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const targetId = this.getAttribute('href');
+            const targetContent = document.querySelector(targetId);
+
+            // Скрываем все содержимое
+            categoryContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Показываем выбранное содержимое
+            if (targetContent) {
+                targetContent.classList.add('active');
+
+                // Плавная прокрутка к содержимому
+                setTimeout(() => {
+                    targetContent.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+
+            // Закрываем мобильное меню если открыто
+            if (window.innerWidth <= 768 && mainNav) {
+                mainNav.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    });
+
+    // Закрытие содержимого при клике вне его
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.category-link') &&
+            !e.target.closest('.category-content') &&
+            !e.target.closest('.dropdown')) {
+            categoryContents.forEach(content => {
+                content.classList.remove('active');
+            });
+        }
+    });
+
+    // Плавная прокрутка для остальных ссылок
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
 
-            if (href !== '#' && href.startsWith('#')) {
+            if (href !== '#' && href.startsWith('#') &&
+                !href.includes('-content') &&
+                !this.classList.contains('category-link')) {
                 e.preventDefault();
                 const targetElement = document.querySelector(href);
 
                 if (targetElement) {
+                    // Закрываем содержимое категорий
+                    categoryContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+
                     // Закрываем мобильное меню если открыто
                     if (window.innerWidth <= 768 && mainNav) {
                         mainNav.classList.remove('active');
                         menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                     }
-
-                    // Добавляем анимацию к целевой секции
-                    targetElement.classList.add('animated');
 
                     // Прокрутка
                     window.scrollTo({

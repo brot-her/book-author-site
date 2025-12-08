@@ -97,85 +97,97 @@
 
             <div class="categories-grid">
                 <!-- Изданное -->
-                <div class="category-card" id="published">
-                    <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <h3>Изданное</h3>
-                    </div>
-                    <div class="category-body">
-                        <p>Книги, которые уже вышли в печать и доступны в магазинах.</p>
-                        <div class="books-list">
-                            <div class="book-item">
-                                <h4>Ящик с ушами</h4>
-                                <p>Детские сказки, 2019 г.</p>
-                                <a href="#" class="btn-small">
-                                    <i class="fas fa-download"></i> Скачать
-                                </a>
+                <a href="#published-content" class="category-link">
+                    <div class="category-card" id="published">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-book"></i>
                             </div>
-                            <!-- Здесь будут другие книги -->
+                            <h3>Изданное</h3>
+                        </div>
+                        <div class="category-body">
+                            <p>Книги, которые уже вышли в печать и доступны в магазинах.</p>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Публикую только здесь -->
-                <div class="category-card" id="exclusive">
-                    <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-lock"></i>
+                <a href="#exclusive-content" class="category-link">
+                    <div class="category-card" id="exclusive">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Публикую только здесь</h3>
                         </div>
-                        <h3>Публикую только здесь</h3>
+                        <div class="category-body">
+                            <p>Эксклюзивные материалы, доступные только на этом сайте.</p>
+                        </div>
                     </div>
-                    <div class="category-body">
-                        <p>Эксклюзивные материалы, доступные только на этом сайте.</p>
-                        <ul class="exclusive-list">
-                            <li>Ранние версии рассказов</li>
-                            <li>Неопубликованные главы</li>
-                            <li>Авторские комментарии</li>
-                            <li>Рабочие материалы</li>
-                        </ul>
-                    </div>
-                </div>
+                </a>
 
                 <!-- Готовятся к изданию -->
-                <div class="category-card" id="preparing">
-                    <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-pen-fancy"></i>
-                        </div>
-                        <h3>Готовятся к изданию</h3>
-                    </div>
-                    <div class="category-body">
-                        <p>Книги, которые находятся в работе. Следите за обновлениями!</p>
-                        <div class="coming-soon">
-                            <div class="coming-book">
-                                <h4>Новая книга</h4>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 60%"></div>
-                                </div>
-                                <span>60% готово</span>
+                <a href="#preparing-content" class="category-link">
+                    <div class="category-card" id="preparing">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-pen-fancy"></i>
                             </div>
+                            <h3>Готовятся к изданию</h3>
+                        </div>
+                        <div class="category-body">
+                            <p>Книги, которые находятся в работе. Следите за обновлениями!</p>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Устаревшее -->
-                <div class="category-card" id="archived">
-                    <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-archive"></i>
+                <a href="#archived-content" class="category-link">
+                    <div class="category-card" id="archived">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-archive"></i>
+                            </div>
+                            <h3>Устаревшее</h3>
                         </div>
-                        <h3>Устаревшее</h3>
-                    </div>
-                    <div class="category-body">
-                        <p>Ранние работы и материалы, которые больше не актуальны.</p>
-                        <div class="archive-note">
-                            <i class="fas fa-history"></i>
-                            <p>Для исторического интереса и исследователей творчества.</p>
+                        <div class="category-body">
+                            <p>Ранние работы и материалы, которые больше не актуальны.</p>
                         </div>
                     </div>
-                </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Содержимое категорий (скрыто по умолчанию) -->
+        <section id="published-content" class="category-content">
+            <h2 class="section-title">Изданные книги</h2>
+            <div class="content-wrapper">
+                <p>Здесь будут отображаться изданные книги. Контент появится позже.</p>
+                <!-- Место для будущего контента -->
+            </div>
+        </section>
+
+        <section id="exclusive-content" class="category-content">
+            <h2 class="section-title">Эксклюзивные материалы</h2>
+            <div class="content-wrapper">
+                <p>Эксклюзивные материалы, доступные только на этом сайте.</p>
+                <!-- Место для будущего контента -->
+            </div>
+        </section>
+
+        <section id="preparing-content" class="category-content">
+            <h2 class="section-title">Готовятся к изданию</h2>
+            <div class="content-wrapper">
+                <p>Книги, которые находятся в работе. Следите за обновлениями!</p>
+                <!-- Место для будущего контента -->
+            </div>
+        </section>
+
+        <section id="archived-content" class="category-content">
+            <h2 class="section-title">Устаревшие материалы</h2>
+            <div class="content-wrapper">
+                <p>Ранние работы и материалы, которые больше не актуальны.</p>
+                <!-- Место для будущего контента -->
             </div>
         </section>
 
@@ -222,30 +234,31 @@
             </div>
         </section>
 
-        <!-- Об авторе -->
-<section class="about" id="about">
-    <h2 class="section-title">Об авторе</h2>
+        <!-- Об авторе (БЕЗ СТАТИСТИКИ) -->
+        <section class="about" id="about">
+            <h2 class="section-title">Об авторе</h2>
 
-    <div class="about-content">
-        <div class="author-info">
-            <div class="author-avatar">
-                <i class="fas fa-user-circle"></i>
+            <div class="about-content">
+                <div class="author-info">
+                    <div class="author-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="author-details">
+                        <h3>Имя Автора</h3>
+                        <p class="author-tagline">Писатель, автор детских книг</p>
+                    </div>
+                </div>
+
+                <div class="author-bio">
+                    <p>Я начал писать детские книги, рассказывая истории своим сыновьям. Со временем эти рассказы превратились в полноценные книги.</p>
+
+                    <p>Верю, что хорошая книга должна быть доступна каждому. Поэтому на этом сайте я делюсь своими работами бесплатно в цифровом формате.</p>
+
+                    <p>Кроме детских сказок, пишу техническую литературу и словари для IT-специалистов.</p>
+                </div>
             </div>
-            <div class="author-details">
-                <h3>Имя Автора</h3>
-                <p class="author-tagline">Писатель, автор детских книг</p>
-            </div>
-        </div>
+        </section>
 
-        <div class="author-bio">
-            <p>Я начал писать детские книги, рассказывая истории своим сыновьям. Со временем эти рассказы превратились в полноценные книги.</p>
-
-            <p>Верю, что хорошая книга должна быть доступна каждому. Поэтому на этом сайте я делюсь своими работами бесплатно в цифровом формате.</p>
-
-            <p>Кроме детских сказок, пишу техническую литературу и словари для IT-специалистов.</p>
-        </div>
-    </div>
-</section>
         <!-- Контакты -->
         <section class="contact" id="contact">
             <h2 class="section-title">Контакты</h2>
@@ -310,7 +323,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 Авторские книги. Все права защищены.</p>
+                <p>&copy; <span class="current-year">2024</span> Авторские книги. Все права защищены.</p>
                 <p class="footer-heart">Сделано с <i class="fas fa-heart"></i> для читателей</p>
             </div>
         </div>
