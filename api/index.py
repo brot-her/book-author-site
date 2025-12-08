@@ -7,15 +7,18 @@ from datetime import datetime
 
 app = FastAPI(title="Ящик с ушами")
 
-# Настройка путей
+# Настройка путей для Vercel
 current_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(current_dir)
 
 # Статические файлы
-app.mount("/static", StaticFiles(directory=os.path.join(root_dir, "public")), name="static")
+static_dir = os.path.join(root_dir, "public")
+if os.path.exists(static_dir):
+    app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 # Шаблоны
-templates = Jinja2Templates(directory=os.path.join(root_dir, "templates"))
+templates_dir = os.path.join(root_dir, "templates")
+templates = Jinja2Templates(directory=templates_dir)
 
 
 # Добавляем фильтр для года в шаблонах
@@ -25,7 +28,7 @@ def current_year():
 
 templates.env.globals["current_year"] = current_year
 
-# ДАННЫЕ О КНИГЕ
+# ВСЯ ИНФОРМАЦИЯ О КНИГЕ ПРЯМО ЗДЕСЬ
 BOOK = {
     "title": "Ящик с ушами",
     "author": "Ваше имя",  # Вставьте своё имя
@@ -41,25 +44,6 @@ BOOK = {
     сочиняя на ходу, моим младшим сыновьям - Тимуру и Бориславу. "Ящик с ушами" - мой первый опыт 
     публикации детских сказок. Хотя мне порой кажется, что это не совсем сказки. И, может быть, 
     даже не вполне детские. Зато все они добрые и с хорошим концом. Как и должно быть в жизни!""",
-
-    "full_story": """<h3>История первая: Тайна картонного ящика</h3>
-
-    <p>На большом белом корабле, который плыл к далёким тёплым островам, случилась странная история. 
-    Каждое утро пропадали бананы из кают-компании. Сначала думали, что это крысы, но крыс на корабле 
-    не было. Потом решили, что кто-то из матросов шутит, но все матросы клялись, что не при чём.</p>
-
-    <p>А из картонного ящика, который стоял в углу каюты, иногда доносилось странное шуршание. 
-    И если прислушаться очень внимательно, можно было услышать тихое-тихое посапывание...</p>
-
-    <h3>Вторая история: Пингвин-моряк</h3>
-
-    <p>В самом холодном порту Антарктики жил пингвин по имени Пинги. Все пингвины вокруг ныряли 
-    за рыбой, грелись на льдинах и воспитывали птенцов. А Пинги мечтал стать моряком.</p>
-
-    <p>"Пингвины не бывают моряками!" - говорили ему друзья. "У нас ласты, а у моряков руки!"</p>
-
-    <p>Но Пинги не слушал. Каждый день он приходил в порт и смотрел, как большие корабли уходят 
-    в открытое море. И однажды...</p>""",
 
     "stories": [
         {
@@ -130,7 +114,7 @@ BOOK = {
 }
 
 
-# Главная страница
+# Маршруты
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse(
@@ -143,7 +127,6 @@ async def home(request: Request):
     )
 
 
-# Страница со всеми историями
 @app.get("/stories", response_class=HTMLResponse)
 async def stories(request: Request):
     return templates.TemplateResponse(
@@ -156,7 +139,6 @@ async def stories(request: Request):
     )
 
 
-# Страница об авторе
 @app.get("/about", response_class=HTMLResponse)
 async def about(request: Request):
     return templates.TemplateResponse(
@@ -169,12 +151,28 @@ async def about(request: Request):
     )
 
 
-# Здоровье API
 @app.get("/health")
 async def health():
     return {"status": "healthy", "book": BOOK["title"]}
 
 
+# Простой обработчик для favicon (частая ошибка на Vercel)
+@app.get("/favicon.ico")
+async def favicon():
+    from fastapi.responses import FileResponse
+    favicon_path = os.path.join(static_dir, "images", "favicon.ico")
+    if os.path.exists(favicon_path):
+        return FileResponse(favicon_path)
+    return {"message": "No favicon"}
+
+
+# Обработчик для Vercel Serverless Functions
+@app.get("/api/{path:path}")
+async def api_handler():
+    return {"message": "API endpoint"}
+
+
+# Главная функция для запуска (для локальной разработки)
 if __name__ == "__main__":
     import uvicorn
 
