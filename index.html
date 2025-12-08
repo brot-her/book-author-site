@@ -3,93 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ящик с ушами - детские сказки</title>
+    <title>Авторские книги | Детские сказки и рассказы</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Простая шапка -->
+    <!-- Шапка с навигацией -->
     <header class="header">
         <div class="container">
-            <nav class="main-nav">
-                <a href="#" class="nav-link active">Главная</a>
-                <a href="#about" class="nav-link">Об авторе</a>
-                <a href="#book" class="nav-link">Книга</a>
-            </nav>
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-book"></i>
+                    <span>Авторские книги</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-home"></i> Главная
+                    </a>
+
+                    <!-- Выпадающее меню "Книги" -->
+                    <div class="dropdown">
+                        <a href="#books" class="nav-link dropdown-toggle">
+                            <i class="fas fa-book-open"></i> Книги
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#published" class="dropdown-item">
+                                <i class="fas fa-book"></i> Изданное
+                            </a>
+                            <a href="#exclusive" class="dropdown-item">
+                                <i class="fas fa-lock"></i> Публикую только здесь
+                            </a>
+                            <a href="#preparing" class="dropdown-item">
+                                <i class="fas fa-pen-fancy"></i> Готовятся к изданию
+                            </a>
+                            <a href="#archived" class="dropdown-item">
+                                <i class="fas fa-archive"></i> Устаревшее
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="#services" class="nav-link">
+                        <i class="fas fa-handshake"></i> Услуги
+                    </a>
+
+                    <a href="#about" class="nav-link">
+                        <i class="fas fa-user"></i> Об авторе
+                    </a>
+
+                    <a href="#contact" class="nav-link btn-contact">
+                        <i class="fas fa-envelope"></i> Контакты
+                    </a>
+                </nav>
+
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
     <main class="container">
-        <!-- Заголовок -->
+        <!-- Герой секция -->
         <section class="hero">
-            <h1>Ящик с ушами</h1>
-            <p class="subtitle">Добрые сказки для детей и взрослых</p>
+            <h1>Про мои книги</h1>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="lead">Книги - дорогое удовольствие. За каждой книгой - труд автора, художника, корректора, редактора, верстальщика, затраты на печать и сборку, упаковку и отправки до потребителя.</p>
+
+                    <p>Поэтому живая, напечатанная на бумаге книга, в переплёте, особенно с цветными иллюстрациями становится постепенно роскошью, увы. И чем красивее, чем "тактильнее" издание, тем оно дороже.</p>
+
+                    <p>Все мои работы есть на маркетплейсах. Их можно купить. Но я хочу, чтобы мои книги были доступны всем. Поэтому здесь вы можете скачать их себе в читаемом формате.</p>
+
+                    <p>Кроме изданных, на сайте я размещаю анонсы тех книг, которые только готовятся к выходу в свет.</p>
+
+                    <p class="highlight">А для настоящих айтишников и сочувствующих им - мои цифровые словари.</p>
+                </div>
+
+                <div class="hero-image">
+                    <div class="book-stack">
+                        <div class="book book-1"></div>
+                        <div class="book book-2"></div>
+                        <div class="book book-3"></div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Информация о книге -->
-        <section class="book-info" id="book">
-            <div class="book-header">
-                <h2>Ящик с ушами</h2>
-                <div class="book-meta">
-                    <p><strong>Автор:</strong> Ваше имя</p>
-                    <p><strong>Художник:</strong> Дарья Мартынова</p>
-                    <p><strong>Год:</strong> 2019</p>
-                    <p><strong>Жанр:</strong> Детская литература, Сказки</p>
+        <!-- Книжные категории -->
+        <section class="book-categories" id="books">
+            <h2 class="section-title">Мои книги по категориям</h2>
+
+            <div class="categories-grid">
+                <!-- Изданное -->
+                <div class="category-card" id="published">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Изданное</h3>
+                    </div>
+                    <div class="category-body">
+                        <p>Книги, которые уже вышли в печать и доступны в магазинах.</p>
+                        <div class="books-list">
+                            <div class="book-item">
+                                <h4>Ящик с ушами</h4>
+                                <p>Детские сказки, 2019 г.</p>
+                                <a href="#" class="btn-small">
+                                    <i class="fas fa-download"></i> Скачать
+                                </a>
+                            </div>
+                            <!-- Здесь будут другие книги -->
+                        </div>
+                    </div>
                 </div>
-                <a href="https://drive.google.com/open?id=18Pxthlic4JkAbdLE8bMWSp6vFuhjTymJ"
-                   target="_blank"
-                   class="btn-read">
-                    <i class="fas fa-book-open"></i> Читать книгу
-                </a>
+
+                <!-- Публикую только здесь -->
+                <div class="category-card" id="exclusive">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Публикую только здесь</h3>
+                    </div>
+                    <div class="category-body">
+                        <p>Эксклюзивные материалы, доступные только на этом сайте.</p>
+                        <ul class="exclusive-list">
+                            <li>Ранние версии рассказов</li>
+                            <li>Неопубликованные главы</li>
+                            <li>Авторские комментарии</li>
+                            <li>Рабочие материалы</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Готовятся к изданию -->
+                <div class="category-card" id="preparing">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <h3>Готовятся к изданию</h3>
+                    </div>
+                    <div class="category-body">
+                        <p>Книги, которые находятся в работе. Следите за обновлениями!</p>
+                        <div class="coming-soon">
+                            <div class="coming-book">
+                                <h4>Новая книга</h4>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 60%"></div>
+                                </div>
+                                <span>60% готово</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Устаревшее -->
+                <div class="category-card" id="archived">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-archive"></i>
+                        </div>
+                        <h3>Устаревшее</h3>
+                    </div>
+                    <div class="category-body">
+                        <p>Ранние работы и материалы, которые больше не актуальны.</p>
+                        <div class="archive-note">
+                            <i class="fas fa-history"></i>
+                            <p>Для исторического интереса и исследователей творчества.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Услуги -->
+        <section class="services" id="services">
+            <h2 class="section-title">Услуги</h2>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Редактура текстов</h3>
+                    <p>Помощь в подготовке рукописей к публикации</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Консультации</h3>
+                    <p>Советы начинающим авторам</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Мастер-классы</h3>
+                    <p>Онлайн и офлайн встречи</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <h3>Чтения</h3>
+                    <p>Авторские чтения для детей и взрослых</p>
+                </div>
             </div>
 
-            <!-- О книге -->
-            <div class="book-description">
-                <h3>О книге</h3>
-                <p>В этой небольшой книге 2019 года - несколько историй, которые я рассказывал, сочиняя на ходу, моим младшим сыновьям - Тимуру и Бориславу. "Ящик с ушами" - мой первый опыт публикации детских сказок.</p>
-                <p>Хотя мне порой кажется, что это не совсем сказки. И, может быть, даже не вполне детские. Зато все они добрые и с хорошим концом. Как и должно быть в жизни!</p>
-            </div>
-
-            <!-- Истории в книге (только названия) -->
-            <div class="stories-section">
-                <h3>Истории в книге</h3>
-                <div class="stories-list">
-                    <div class="story-title">Ящик с ушами</div>
-                    <div class="story-title">Пингвин-моряк</div>
-                    <div class="story-title">Воздушный говорящий змей</div>
-                    <div class="story-title">Тайна знаков препинания</div>
-                    <div class="story-title">Пятая сказка</div>
-                </div>
+            <div class="services-note">
+                <p><i class="fas fa-info-circle"></i> Подробности об услугах и условиях можно обсудить индивидуально.</p>
             </div>
         </section>
 
         <!-- Об авторе -->
-        <section class="author-section" id="about">
-            <h2>Об авторе</h2>
-            <div class="author-content">
-                <p>Здесь будет информация об авторе. Расскажите о себе, своем творческом пути, почему решили писать детские сказки, что вас вдохновляет.</p>
-                <p>Вы можете добавить фотографию, контакты или ссылки на социальные сети.</p>
+        <section class="about" id="about">
+            <h2 class="section-title">Об авторе</h2>
+
+            <div class="about-content">
+                <div class="author-info">
+                    <div class="author-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="author-details">
+                        <h3>Имя Автора</h3>
+                        <p class="author-tagline">Писатель, автор детских книг</p>
+
+                        <div class="author-stats">
+                            <div class="stat">
+                                <span class="stat-number">5+</span>
+                                <span class="stat-label">лет творчества</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">10+</span>
+                                <span class="stat-label">книг и рассказов</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">1000+</span>
+                                <span class="stat-label">читателей</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="author-bio">
+                    <p>Я начал писать детские книги, рассказывая истории своим сыновьям. Со временем эти рассказы превратились в полноценные книги.</p>
+
+                    <p>Верю, что хорошая книга должна быть доступна каждому. Поэтому на этом сайте я делюсь своими работами бесплатно в цифровом формате.</p>
+
+                    <p>Кроме детских сказок, пишу техническую литературу и словари для IT-специалистов.</p>
+                </div>
             </div>
         </section>
 
-        <!-- Финальный призыв -->
-        <section class="final-cta">
-            <h2>Хотите прочитать эти добрые истории?</h2>
-            <a href="https://drive.google.com/open?id=18Pxthlic4JkAbdLE8bMWSp6vFuhjTymJ"
-               target="_blank"
-               class="btn-read-large">
-                <i class="fas fa-book-reader"></i> Читать книгу онлайн
-            </a>
-            <p class="note"><i class="fas fa-heart"></i> Все истории добрые и с хорошим концом!</p>
+        <!-- Контакты -->
+        <section class="contact" id="contact">
+            <h2 class="section-title">Контакты</h2>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>author@example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-paper-plane"></i>
+                        <div>
+                            <h4>Telegram</h4>
+                            <p>@author_books</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-bookmark"></i>
+                        <div>
+                            <h4>Для СМИ</h4>
+                            <p>press@example.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-note">
+                    <p><i class="fas fa-handshake"></i> Открыт к сотрудничеству и новым проектам</p>
+                </div>
+            </div>
         </section>
     </main>
 
     <!-- Подвал -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Ваше имя. Иллюстрации: Дарья Мартынова</p>
-            <p class="contact">Контакты: ваш.email@example.com</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Авторские книги</h3>
+                    <p>Детские сказки и техническая литература</p>
+                    <p>Бесплатный доступ к цифровым версиям</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <a href="#">Главная</a>
+                    <a href="#published">Изданное</a>
+                    <a href="#services">Услуги</a>
+                    <a href="#about">Об авторе</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Политика</h4>
+                    <p>Все материалы защищены авторским правом</p>
+                    <p>При использовании ссылка на источник обязательна</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Авторские книги. Все права защищены.</p>
+                <p class="footer-heart">Сделано с <i class="fas fa-heart"></i> для читателей</p>
+            </div>
         </div>
     </footer>
 

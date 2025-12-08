@@ -1,4 +1,18 @@
-/* Базовые стили */
+/* Основные стили */
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --accent-color: #ff8a65;
+    --light-color: #f8f9fa;
+    --dark-color: #2c3e50;
+    --text-color: #333;
+    --gray-color: #6c757d;
+
+    --shadow: 0 5px 15px rgba(0,0,0,0.08);
+    --radius: 10px;
+    --transition: all 0.3s ease;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,243 +22,679 @@
 body {
     font-family: 'Nunito', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #fffef7;
+    color: var(--text-color);
+    background-color: var(--light-color);
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
 /* Шапка */
 .header {
-    background: #ff9a76;
+    background-color: white;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 1rem 0;
-    margin-bottom: 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.logo i {
+    color: var(--primary-color);
 }
 
 .main-nav {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .nav-link {
-    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     text-decoration: none;
+    color: var(--dark-color);
     font-weight: 600;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background 0.3s;
+    border-radius: var(--radius);
+    transition: var(--transition);
+    position: relative;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    background: rgba(255, 255, 255, 0.2);
+    color: var(--primary-color);
+    background-color: rgba(74, 111, 165, 0.1);
 }
 
-/* Главный заголовок */
-.hero {
+.btn-contact {
+    background-color: var(--accent-color);
+    color: white !important;
+}
+
+.btn-contact:hover {
+    background-color: #ff7043;
+    transform: translateY(-2px);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    cursor: pointer;
+}
+
+/* Выпадающее меню */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-icon {
+    font-size: 0.8rem;
+    margin-left: 5px;
+    transition: var(--transition);
+}
+
+.dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: white;
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    color: var(--dark-color);
+    transition: var(--transition);
+}
+
+.dropdown-item:hover {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+}
+
+.dropdown-item i {
+    width: 20px;
     text-align: center;
-    margin-bottom: 3rem;
+}
+
+/* Главная секция */
+.hero {
+    padding: 3rem 0;
 }
 
 .hero h1 {
+    font-family: 'Merriweather', serif;
     font-size: 2.5rem;
-    color: #5d4037;
-    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
-.subtitle {
-    color: #8d6e63;
-    font-size: 1.2rem;
+.hero-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: center;
 }
 
-/* Информация о книге */
-.book-info {
+.hero-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.lead {
+    font-size: 1.3rem !important;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.highlight {
+    background-color: #fff8e1;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--accent-color);
+    font-style: italic;
+}
+
+/* Книжная стопка */
+.book-stack {
+    position: relative;
+    height: 300px;
+}
+
+.book {
+    position: absolute;
     background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    border: 1px solid #e0e0e0;
+}
+
+.book-1 {
+    width: 200px;
+    height: 280px;
+    background: linear-gradient(135deg, #4a6fa5, #166088);
+    transform: rotate(-5deg);
+    left: 0;
+    top: 0;
+}
+
+.book-2 {
+    width: 200px;
+    height: 280px;
+    background: linear-gradient(135deg, #ff8a65, #ff7043);
+    transform: rotate(2deg);
+    left: 40px;
+    top: 10px;
+}
+
+.book-3 {
+    width: 200px;
+    height: 280px;
+    background: linear-gradient(135deg, #4db6ac, #26a69a);
+    transform: rotate(8deg);
+    left: 80px;
+    top: 5px;
+}
+
+/* Категории книг */
+.section-title {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    color: var(--dark-color);
+    text-align: center;
     margin-bottom: 2rem;
 }
 
-.book-header {
-    border-bottom: 2px solid #ffecb3;
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.5rem;
+.book-categories {
+    padding: 3rem 0;
 }
 
-.book-header h2 {
-    color: #5d4037;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.book-meta {
+.categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
-.book-meta p {
-    margin-bottom: 0.5rem;
+.category-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
 }
 
-/* Кнопка чтения */
-.btn-read {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #4db6ac;
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.category-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    text-decoration: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: all 0.3s;
-}
-
-.btn-read:hover {
-    background: #26a69a;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(77, 182, 172, 0.3);
-}
-
-/* Описание книги */
-.book-description h3,
-.stories-section h3 {
-    color: #5d4037;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.book-description p {
-    margin-bottom: 1rem;
-    color: #666;
-}
-
-/* Список историй */
-.stories-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
     gap: 1rem;
+}
+
+.category-icon {
+    font-size: 1.5rem;
+}
+
+.category-header h3 {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.category-body {
+    padding: 1.5rem;
+}
+
+.category-body p {
+    margin-bottom: 1rem;
+    color: var(--gray-color);
+}
+
+/* Списки книг */
+.books-list {
     margin-top: 1rem;
 }
 
-.story-title {
-    background: #fff8e1;
-    padding: 1rem;
-    border-radius: 8px;
+.book-item {
+    border-top: 1px solid #eee;
+    padding: 1rem 0;
+}
+
+.book-item:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.book-item h4 {
+    color: var(--dark-color);
+    margin-bottom: 0.3rem;
+}
+
+.book-item p {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+    margin-bottom: 0.5rem;
+}
+
+.btn-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.btn-small:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Списки */
+.exclusive-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.exclusive-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed #eee;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.exclusive-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Прогресс бар */
+.coming-soon {
+    margin-top: 1rem;
+}
+
+.coming-book {
     text-align: center;
-    font-weight: 600;
-    color: #5d4037;
-    border: 1px solid #ffecb3;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color), #ff7043);
+    border-radius: 5px;
+}
+
+.coming-book span {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+}
+
+/* Архив */
+.archive-note {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-top: 1rem;
+}
+
+.archive-note i {
+    font-size: 1.5rem;
+    color: var(--gray-color);
+}
+
+/* Услуги */
+.services {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+    margin: 2rem 0;
+    border-radius: var(--radius);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.services-note {
+    text-align: center;
+    color: var(--gray-color);
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
 }
 
 /* Об авторе */
-.author-section {
+.about {
+    padding: 3rem 0;
+}
+
+.about-content {
     background: white;
+    border-radius: var(--radius);
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
 }
 
-.author-section h2 {
-    color: #5d4037;
-    margin-bottom: 1rem;
-}
-
-.author-content p {
-    margin-bottom: 1rem;
-    color: #666;
-}
-
-/* Финальный призыв */
-.final-cta {
-    text-align: center;
-    background: linear-gradient(135deg, #ffecb3 0%, #ffcc80 100%);
-    padding: 2rem;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-}
-
-.final-cta h2 {
-    color: #5d4037;
-    margin-bottom: 1rem;
-}
-
-.btn-read-large {
-    display: inline-flex;
+.author-info {
+    display: flex;
     align-items: center;
-    gap: 10px;
-    background: #ff7043;
-    color: white;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 25px;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.author-avatar {
+    font-size: 4rem;
+    color: var(--primary-color);
+}
+
+.author-details h3 {
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.author-tagline {
+    color: var(--gray-color);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.author-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.8rem;
     font-weight: bold;
-    font-size: 1.1rem;
-    margin: 1rem 0;
-    transition: all 0.3s;
+    color: var(--primary-color);
 }
 
-.btn-read-large:hover {
-    background: #f4511e;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 112, 67, 0.3);
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--gray-color);
 }
 
-.note {
-    color: #5d4037;
-    margin-top: 1rem;
+.author-bio p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+/* Контакты */
+.contact {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #f8f9fa, white);
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+}
+
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.contact-item h4 {
+    color: var(--dark-color);
+    margin-bottom: 0.3rem;
+}
+
+.contact-note {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-note i {
+    color: var(--accent-color);
+    margin-right: 10px;
 }
 
 /* Подвал */
 .footer {
-    background: #5d4037;
+    background-color: var(--dark-color);
     color: white;
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 3rem;
+    padding: 3rem 0 1rem;
 }
 
-.footer p {
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.footer-section p {
+    color: #bdc3c7;
     margin-bottom: 0.5rem;
-}
-
-.contact {
-    color: #ffccbc;
     font-size: 0.9rem;
 }
 
+.footer-section a {
+    display: block;
+    color: #bdc3c7;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+    text-align: center;
+    color: #bdc3c7;
+}
+
+.footer-heart {
+    color: #ff8a80;
+    margin-top: 0.5rem;
+}
+
 /* Адаптивность */
-@media (max-width: 600px) {
+@media (max-width: 992px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .book-stack {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
     .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
         flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+    }
+
+    .main-nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding-left: 1rem;
+        display: none;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-toggle .dropdown-icon {
+        display: none;
+    }
+
+    .author-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .author-stats {
+        justify-content: center;
     }
 
     .hero h1 {
         font-size: 2rem;
     }
 
-    .book-meta {
-        grid-template-columns: 1fr;
-    }
-
-    .stories-list {
-        grid-template-columns: 1fr;
-    }
-
-    .btn-read,
-    .btn-read-large {
-        width: 100%;
-        justify-content: center;
+    .section-title {
+        font-size: 1.5rem;
     }
 }
