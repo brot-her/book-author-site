@@ -1,14 +1,14 @@
-/* Основные стили */
+/* Основные стили - КОРИЧНЕВАЯ ЦВЕТОВАЯ СХЕМА */
 :root {
-    --primary-color: #4a6fa5;
-    --secondary-color: #166088;
-    --accent-color: #ff8a65;
-    --light-color: #f8f9fa;
-    --dark-color: #2c3e50;
-    --text-color: #333;
-    --gray-color: #6c757d;
+    --primary-color: #8B4513; /* Коричневый как книга */
+    --secondary-color: #654321; /* Темный коричневый */
+    --accent-color: #D2691E; /* Оранжево-коричневый */
+    --light-color: #FAF3E0; /* Светлый кремовый фон */
+    --dark-color: #5D4037; /* Темный коричневый */
+    --text-color: #3E2723; /* Цвет текста */
+    --gray-color: #795548; /* Серо-коричневый */
 
-    --shadow: 0 5px 15px rgba(0,0,0,0.08);
+    --shadow: 0 5px 15px rgba(91, 70, 54, 0.15);
     --radius: 10px;
     --transition: all 0.3s ease;
 }
@@ -24,6 +24,7 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--light-color);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23FAF3E0"/><path d="M0,0 L100,100" stroke="%23E8DCC0" stroke-width="0.5"/><path d="M100,0 L0,100" stroke="%23E8DCC0" stroke-width="0.5"/></svg>');
 }
 
 .container {
@@ -34,11 +35,12 @@ body {
 
 /* Шапка */
 .header {
-    background-color: white;
+    background-color: #FFF8E1;
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 3px solid var(--primary-color);
 }
 
 .header-content {
@@ -78,22 +80,26 @@ body {
     padding: 0.5rem 1rem;
     border-radius: var(--radius);
     transition: var(--transition);
+    border: 1px solid transparent;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--primary-color);
-    background-color: rgba(74, 111, 165, 0.1);
+    color: var(--accent-color);
+    background-color: rgba(139, 69, 19, 0.1);
+    border: 1px solid rgba(139, 69, 19, 0.2);
 }
 
 .btn-contact {
-    background-color: var(--accent-color);
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
     color: white !important;
+    box-shadow: 0 3px 10px rgba(210, 105, 30, 0.3);
 }
 
 .btn-contact:hover {
-    background-color: #ff7043;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
 }
 
 .menu-toggle {
@@ -129,7 +135,7 @@ body {
     top: 100%;
     left: 0;
     min-width: 200px;
-    background: white;
+    background: #FFF8E1;
     box-shadow: var(--shadow);
     border-radius: var(--radius);
     padding: 0.5rem 0;
@@ -138,6 +144,7 @@ body {
     transform: translateY(10px);
     transition: var(--transition);
     z-index: 1000;
+    border: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .dropdown:hover .dropdown-menu {
@@ -154,11 +161,13 @@ body {
     text-decoration: none;
     color: var(--dark-color);
     transition: var(--transition);
+    border-left: 3px solid transparent;
 }
 
 .dropdown-item:hover {
-    background-color: var(--light-color);
-    color: var(--primary-color);
+    background-color: rgba(139, 69, 19, 0.05);
+    color: var(--accent-color);
+    border-left: 3px solid var(--accent-color);
 }
 
 .dropdown-item i {
@@ -177,6 +186,21 @@ body {
     color: var(--dark-color);
     margin-bottom: 2rem;
     text-align: center;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 10px;
+}
+
+.hero h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
 }
 
 .hero-content {
@@ -196,14 +220,16 @@ body {
     font-size: 1.3rem !important;
     font-weight: 600;
     color: var(--secondary-color);
+    font-style: italic;
 }
 
 .highlight {
-    background-color: #fff8e1;
+    background-color: #FFF3E0;
     padding: 1.5rem;
     border-radius: var(--radius);
-    border-left: 4px solid var(--accent-color);
+    border: 1px solid rgba(210, 105, 30, 0.2);
     font-style: italic;
+    box-shadow: 0 3px 10px rgba(139, 69, 19, 0.1);
 }
 
 /* Книжная стопка */
@@ -223,7 +249,7 @@ body {
 .book-1 {
     width: 200px;
     height: 280px;
-    background: linear-gradient(135deg, #4a6fa5, #166088);
+    background: linear-gradient(135deg, #8B4513, #654321);
     transform: rotate(-5deg);
     left: 0;
     top: 0;
@@ -232,7 +258,7 @@ body {
 .book-2 {
     width: 200px;
     height: 280px;
-    background: linear-gradient(135deg, #ff8a65, #ff7043);
+    background: linear-gradient(135deg, #D2691E, #A0522D);
     transform: rotate(2deg);
     left: 40px;
     top: 10px;
@@ -241,7 +267,7 @@ body {
 .book-3 {
     width: 200px;
     height: 280px;
-    background: linear-gradient(135deg, #4db6ac, #26a69a);
+    background: linear-gradient(135deg, #BC8F8F, #8B4513);
     transform: rotate(8deg);
     left: 80px;
     top: 5px;
@@ -254,6 +280,19 @@ body {
     color: var(--dark-color);
     text-align: center;
     margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
 }
 
 .book-categories {
@@ -272,11 +311,12 @@ body {
     box-shadow: var(--shadow);
     overflow: hidden;
     transition: var(--transition);
+    border: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .category-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(139, 69, 19, 0.15);
 }
 
 .category-header {
@@ -319,17 +359,17 @@ body {
 }
 
 .category-link:hover .category-card {
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 35px rgba(139, 69, 19, 0.2);
 }
 
 /* Содержимое категорий (скрыто) */
 .category-content {
     display: none;
     padding: 3rem 0;
-    background: #f8f9fa;
+    background: #FFF8E1;
     border-radius: var(--radius);
     margin: 2rem 0;
-    border: 1px solid #e0e0e0;
+    border: 1px solid rgba(139, 69, 19, 0.1);
     box-shadow: var(--shadow);
 }
 
@@ -363,13 +403,13 @@ body {
     box-shadow: var(--shadow);
     padding: 2rem;
     margin-bottom: 2rem;
-    border: 1px solid #e0e0e0;
+    border: 1px solid rgba(139, 69, 19, 0.1);
     transition: var(--transition);
 }
 
 .book-detail:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(139, 69, 19, 0.15);
 }
 
 .book-cover {
@@ -420,7 +460,7 @@ body {
 .book-meta {
     margin-top: 1.5rem;
     padding-top: 1rem;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(139, 69, 19, 0.1);
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
@@ -448,9 +488,10 @@ body {
 /* Услуги */
 .services {
     padding: 3rem 0;
-    background-color: #f8f9fa;
+    background-color: #FFF3E0;
     margin: 2rem 0;
     border-radius: var(--radius);
+    border: 1px solid rgba(210, 105, 30, 0.1);
 }
 
 .services-grid {
@@ -467,10 +508,12 @@ body {
     text-align: center;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    border: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(139, 69, 19, 0.15);
 }
 
 .service-icon {
@@ -482,13 +525,14 @@ body {
 .service-card h3 {
     color: var(--dark-color);
     margin-bottom: 0.5rem;
+    font-family: 'Merriweather', serif;
 }
 
 .services-note {
     text-align: center;
     color: var(--gray-color);
     padding-top: 1rem;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(139, 69, 19, 0.2);
 }
 
 /* Об авторе */
@@ -501,6 +545,7 @@ body {
     border-radius: var(--radius);
     padding: 2rem;
     box-shadow: var(--shadow);
+    border: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .author-info {
@@ -509,7 +554,7 @@ body {
     gap: 2rem;
     margin-bottom: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(139, 69, 19, 0.2);
 }
 
 .author-avatar {
@@ -521,25 +566,28 @@ body {
     font-size: 1.8rem;
     color: var(--dark-color);
     margin-bottom: 0.5rem;
+    font-family: 'Merriweather', serif;
 }
 
 .author-tagline {
-    color: var(--gray-color);
+    color: var(--accent-color);
     font-style: italic;
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 .author-bio p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     line-height: 1.8;
 }
 
 /* Контакты */
 .contact {
     padding: 3rem 0;
-    background: linear-gradient(135deg, #f8f9fa, white);
+    background: linear-gradient(135deg, #FFF3E0, #FFF8E1);
     border-radius: var(--radius);
     margin-bottom: 2rem;
+    border: 1px solid rgba(210, 105, 30, 0.1);
 }
 
 .contact-content {
@@ -562,6 +610,13 @@ body {
     padding: 1.5rem;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.15);
 }
 
 .contact-item i {
@@ -572,6 +627,7 @@ body {
 .contact-item h4 {
     color: var(--dark-color);
     margin-bottom: 0.3rem;
+    font-family: 'Merriweather', serif;
 }
 
 .contact-note {
@@ -580,6 +636,7 @@ body {
     background: white;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    border: 1px dashed rgba(210, 105, 30, 0.3);
 }
 
 .contact-note i {
@@ -589,9 +646,10 @@ body {
 
 /* Подвал */
 .footer {
-    background-color: var(--dark-color);
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
     color: white;
     padding: 3rem 0 1rem;
+    border-top: 3px solid var(--accent-color);
 }
 
 .footer-content {
@@ -605,35 +663,36 @@ body {
 .footer-section h4 {
     color: white;
     margin-bottom: 1rem;
+    font-family: 'Merriweather', serif;
 }
 
 .footer-section p {
-    color: #bdc3c7;
+    color: #E0D7CC;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
 }
 
 .footer-section a {
     display: block;
-    color: #bdc3c7;
+    color: #E0D7CC;
     text-decoration: none;
     margin-bottom: 0.5rem;
     transition: var(--transition);
 }
 
 .footer-section a:hover {
-    color: white;
+    color: var(--accent-color);
 }
 
 .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 1.5rem;
     text-align: center;
-    color: #bdc3c7;
+    color: #E0D7CC;
 }
 
 .footer-heart {
-    color: #ff8a80;
+    color: #FF8A80;
     margin-top: 0.5rem;
 }
 
@@ -672,10 +731,11 @@ body {
         top: 100%;
         left: 0;
         right: 0;
-        background: white;
+        background: #FFF8E1;
         flex-direction: column;
         padding: 1rem;
         box-shadow: var(--shadow);
+        border: 1px solid rgba(139, 69, 19, 0.1);
     }
 
     .main-nav.active {
@@ -694,6 +754,7 @@ body {
         box-shadow: none;
         padding-left: 1rem;
         display: none;
+        background: rgba(139, 69, 19, 0.05);
     }
 
     .dropdown.active .dropdown-menu {
@@ -709,19 +770,6 @@ body {
         text-align: center;
     }
 
-    .author-stats {
-        justify-content: center;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .section-title {
-        font-size: 1.5rem;
-    }
-
-    /* Адаптивность для книг */
     .book-cover {
         float: none;
         margin: 0 auto 1.5rem;
@@ -748,5 +796,13 @@ body {
 
     .meta-item {
         margin-bottom: 0.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
     }
 }
