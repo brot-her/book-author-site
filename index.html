@@ -1,125 +1,451 @@
-<!-- Содержимое категорий (скрыто по умолчанию) -->
-<section id="published-content" class="category-content">
-    <h2 class="section-title">Изданные книги</h2>
-    <div class="content-wrapper">
-        <!-- Книга: Живая кровать -->
-        <div class="book-detail">
-            <div class="book-cover">
-                <div class="cover-placeholder" style="background: linear-gradient(135deg, #8B4513, #654321);">
-                    <i class="fas fa-bed"></i>
-                </div>
-            </div>
-            <div class="book-info">
-                <h3>Живая кровать</h3>
-                <p class="book-subtitle">Второй сборник детских сказок</p>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторские книги | Детские сказки и рассказы</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка с навигацией -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-book"></i>
+                    <span>Авторские книги</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-home"></i> Главная
+                    </a>
 
-                <div class="book-description">
-                    <p>Это моя вторая детская книга сказок. Так что я её выпускал уже как опытный сказочник. Первый сборник, "Ящик с ушами", так понравился читателям - мальчикам и девочкам от 3-х до 89-ти лет, - что я стал часто слышать от них и их родителей мотивирующее: "Пиши еще!". Или приятное: "А ведь это неплохо!". А иногда даже вдохновляющее "Ну, ты даешь!"</p>
+                    <!-- Выпадающее меню "Книги" -->
+                    <div class="dropdown">
+                        <a href="#books" class="nav-link dropdown-toggle">
+                            <i class="fas fa-book-open"></i> Книги
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#published" class="dropdown-item">
+                                <i class="fas fa-book"></i> Изданное
+                            </a>
+                            <a href="#exclusive" class="dropdown-item">
+                                <i class="fas fa-lock"></i> Публикую только здесь
+                            </a>
+                            <a href="#preparing" class="dropdown-item">
+                                <i class="fas fa-pen-fancy"></i> Готовятся к изданию
+                            </a>
+                            <a href="#archived" class="dropdown-item">
+                                <i class="fas fa-archive"></i> Устаревшее
+                            </a>
+                        </div>
+                    </div>
 
-                    <p>Поэтому я верю, что "Живая кровать", в которой поместилось несколько любимых сказок моих младших сыновей, тоже полюбится читателю. И настоящие герои, и фантастические сюжеты, и, конечно же, волшебные иллюстрации – в книге есть всё. И даже немного больше.</p>
+                    <a href="#services" class="nav-link">
+                        <i class="fas fa-handshake"></i> Услуги
+                    </a>
 
-                    <p>Главная сказка книги – про путешествие живой кровати, которая … нет, больше ни слова! А то получится спойлер в чистом виде.</p>
+                    <a href="#about" class="nav-link">
+                        <i class="fas fa-user"></i> Об авторе
+                    </a>
 
-                    <p>Иллюстрации к этой книге делала Ксения Седова, для неё это был первый опыт работы художником для детской книги. Меня очаровала показная мрачность в стиле средневековых басенок для детей иллюстраций Ксюши. И я подумал – а почему бы и нет? Не обязательно же всем детским книгам сверкать как празднично украшенная новогодняя ель! Пусть очаровывает своей самобытностью.</p>
+                    <a href="#contact" class="nav-link btn-contact">
+                        <i class="fas fa-envelope"></i> Контакты
+                    </a>
+                </nav>
 
-                    <p>Конечно же, вы можете не согласиться со мною. Но не забывайте - что перед вами сказки для маленьких волшебников. И это им решать - нравятся им иллюстрации или нет:)</p>
-                </div>
-
-                <div class="book-meta">
-                    <span class="meta-item"><i class="fas fa-book-open"></i> Детские сказки</span>
-                    <span class="meta-item"><i class="fas fa-calendar"></i> 2022 г.</span>
-                    <span class="meta-item"><i class="fas fa-paint-brush"></i> Иллюстрации: Ксения Седова</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Книга: Белорусская кулинарная книга в изгнании -->
-        <div class="book-detail">
-            <div class="book-cover">
-                <div class="cover-placeholder" style="background: linear-gradient(135deg, #D2691E, #A0522D);">
-                    <i class="fas fa-utensils"></i>
-                </div>
-            </div>
-            <div class="book-info">
-                <h3>Белорусская кулинарная книга в изгнании</h3>
-                <p class="book-subtitle">Рецепты и истории о Беларуси</p>
-
-                <div class="book-description">
-                    <p>Перед вами самая необычная из всех известных кулинарных книг. Да, в ней вы найдёте массу рецептов. Но главное блюдо в ней - любовь к родной Беларуси, к её земле, к её синим озёрам, к её большим рекам и совсем маленьким речкам, к её грибным лесам… а главное – к её людям, щедрым, радушным и очень настоящим!</p>
-
-                    <p>Это гимн культуре и национальному характеру. А в чём он проявляется лучше всего? Конечно же - в еде! В том, как готовится, как и с чем она подаётся.</p>
-
-                    <p>Книга пропитана добротой и юмором (белорусским, конечно же). В ней полно интересных исторических подробностей, слышны поговорки и песни, в которых звучат голоса наших прадедов.</p>
-
-                    <p>В книге есть мои переводы на русский язык двух потрясающих стихотворений белорусского известного поэта - Максима Танка (Яўгена Іванавіча Скурко): про противостояние старика и старой щуки, а также про ритуал забоя кабана. Я хочу, чтобы очарование строк Танка стало доступно русскоязычному читателю.</p>
-
-                    <p>Книга нежная, тёплая, смешная с грустинкой. И, конечно, очень вкусная. Наслаждайтесь! И приходите в мой кулинарный канал в ТГ @breadsalo. Я веду его немного несистемно, но с душой.</p>
-                </div>
-
-                <div class="book-meta">
-                    <span class="meta-item"><i class="fas fa-utensils"></i> Кулинария, Культура</span>
-                    <span class="meta-item"><i class="fas fa-calendar"></i> 2021 г.</span>
-                    <span class="meta-item"><i class="fas fa-heart"></i> Про Беларусь с любовью</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Книга: Чемпион сказал -->
-        <div class="book-detail">
-            <div class="book-cover">
-                <div class="cover-placeholder" style="background: linear-gradient(135deg, #2c3e50, #34495e);">
-                    <i class="fas fa-trophy"></i>
-                </div>
-            </div>
-            <div class="book-info">
-                <h3>Чемпион сказал</h3>
-                <p class="book-subtitle">Биография боксёра Виктора Рыбакова</p>
-
-                <div class="book-description">
-                    <p>Эта биографическая книга написана на основе серии интервью с легендарным советским боксёром 80-х годов прошлого столетия, Виктором Григорьевичем Рыбаковым, призёром двух Олимпиад, многократным победителем чемпионатов Европы и СССР.</p>
-
-                    <p>Построенная не как мемуары, а скорее сборник историй, случаев, забавных происшествий и ярких мгновений детства, юности, спортивного и профессионального пути Рыбакова, книга читается легко и непринуждённо.</p>
-
-                    <p>Здесь нет нравоучений и посланий к читателю, зато очень много юмора и самоиронии, теплоты и житейской мудрости чемпиона. Книга написана живым языком, в формате прямой речи героя, почти без купюр и предназначена для тех, кто причастен к истории СССР и России, истории мирового спорта, прежде всего любительского бокса, конца прошлого - начала этого века.</p>
-                </div>
-
-                <div class="book-meta">
-                    <span class="meta-item"><i class="fas fa-user"></i> Биография, Спорт</span>
-                    <span class="meta-item"><i class="fas fa-calendar"></i> 2020 г.</span>
-                    <span class="meta-item"><i class="fas fa-boxing-glove"></i> Про бокс и чемпионов</span>
-                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
+    </header>
 
-        <!-- Книга: Киботой -->
-        <div class="book-detail">
-            <div class="book-cover">
-                <div class="cover-placeholder" style="background: linear-gradient(135deg, #4db6ac, #26a69a);">
-                    <i class="fas fa-fish"></i>
+    <main class="container">
+        <!-- Герой секция -->
+        <section class="hero">
+            <h1>Про мои книги</h1>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="lead">Книги - дорогое удовольствие. За каждой книгой - труд автора, художника, корректора, редактора, верстальщика, затраты на печать и сборку, упаковку и отправки до потребителя.</p>
+
+                    <p>Поэтому живая, напечатанная на бумаге книга, в переплёте, особенно с цветными иллюстрациями становится постепенно роскошью, увы. И чем красивее, чем "тактильнее" издание, тем оно дороже.</p>
+
+                    <p>Все мои работы есть на маркетплейсах. Их можно купить. Но я хочу, чтобы мои книги были доступны всем. Поэтому здесь вы можете скачать их себе в читаемом формате.</p>
+
+                    <p>Кроме изданных, на сайте я размещаю анонсы тех книг, которые только готовятся к выходу в свет.</p>
+
+                    <p class="highlight">А для настоящих айтишников и сочувствующих им - мои цифровые словари.</p>
+                </div>
+
+                <div class="hero-image">
+                    <div class="book-stack">
+                        <div class="book book-1"></div>
+                        <div class="book book-2"></div>
+                        <div class="book book-3"></div>
+                    </div>
                 </div>
             </div>
-            <div class="book-info">
-                <h3>Киботой</h3>
-                <p class="book-subtitle">Повесть о выборе и величии духа</p>
+        </section>
 
-                <div class="book-description">
-                    <p>Эта книга для ребёнка, который живёт в каждом из нас, независимо от нашего паспортного возраста.</p>
+        <!-- Книжные категории -->
+        <section class="book-categories" id="books">
+            <h2 class="section-title">Мои книги по категориям</h2>
 
-                    <p>Повесть – про выбор. Про то, как и зачем мы делаем глупости, которые потом кто-то назовёт поступком. Про то как живётся маленькому винтику в большой системе. И о роли личности в истории. Ведь дело не в размере, а в величии духа и в масштабности фигуры. Мужественными могут быть и слон, и лось, и даже маленькая рыбка, защищающая своих детей.</p>
+            <div class="categories-grid">
+                <!-- Изданное -->
+                <a href="#published-content" class="category-link">
+                    <div class="category-card" id="published">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3>Изданное</h3>
+                        </div>
+                        <div class="category-body">
+                            <p>Книги, которые уже вышли в печать и доступны в магазинах.</p>
+                        </div>
+                    </div>
+                </a>
 
-                    <p>Иногда сама судьба ставит нас перед выбором – сражаться или отступить. И тот, кто выбирает сражаться, становится героем, чьё имя овеяно славой. А тот, кто отступает, – выживает и передаёт гены мудрости своим потомкам.</p>
+                <!-- Публикую только здесь -->
+                <a href="#exclusive-content" class="category-link">
+                    <div class="category-card" id="exclusive">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Публикую только здесь</h3>
+                        </div>
+                        <div class="category-body">
+                            <p>Эксклюзивные материалы, доступные только на этом сайте.</p>
+                        </div>
+                    </div>
+                </a>
 
-                    <p>Герой моей повести – рачок криля Креветос проходит длинный путь к славе … и обратно. Уцелеть в невероятных испытаниях ему помогают личные качества, креативность, любовь к своему племени, готовность к самопожертвованию и любовь отца, который завещал ему самую главную ценность всей колонии криля - стратегию выживания.</p>
+                <!-- Готовятся к изданию -->
+                <a href="#preparing-content" class="category-link">
+                    <div class="category-card" id="preparing">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-pen-fancy"></i>
+                            </div>
+                            <h3>Готовятся к изданию</h3>
+                        </div>
+                        <div class="category-body">
+                            <p>Книги, которые находятся в работе. Следите за обновлениями!</p>
+                        </div>
+                    </div>
+                </a>
 
-                    <p>Так что это не просто занимательная история, а бизнес-литература в чистом виде. Пусть это и не очевидно. Можете мне поверить! Я знаю.</p>
+                <!-- Устаревшее -->
+                <a href="#archived-content" class="category-link">
+                    <div class="category-card" id="archived">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-archive"></i>
+                            </div>
+                            <h3>Устаревшее</h3>
+                        </div>
+                        <div class="category-body">
+                            <p>Ранние работы и материалы, которые больше не актуальны.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Содержимое категорий (скрыто по умолчанию) -->
+        <section id="published-content" class="category-content">
+            <h2 class="section-title">Изданные книги</h2>
+            <div class="content-wrapper">
+                <!-- Книга: Живая кровать -->
+                <div class="book-detail">
+                    <div class="book-cover">
+                        <div class="cover-placeholder" style="background: linear-gradient(135deg, #8B4513, #654321);">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h3>Живая кровать</h3>
+                        <p class="book-subtitle">Второй сборник детских сказок</p>
+
+                        <div class="book-description">
+                            <p>Это моя вторая детская книга сказок. Так что я её выпускал уже как опытный сказочник. Первый сборник, "Ящик с ушами", так понравился читателям - мальчикам и девочкам от 3-х до 89-ти лет, - что я стал часто слышать от них и их родителей мотивирующее: "Пиши еще!". Или приятное: "А ведь это неплохо!". А иногда даже вдохновляющее "Ну, ты даешь!"</p>
+
+                            <p>Поэтому я верю, что "Живая кровать", в которой поместилось несколько любимых сказок моих младших сыновей, тоже полюбится читателю. И настоящие герои, и фантастические сюжеты, и, конечно же, волшебные иллюстрации – в книге есть всё. И даже немного больше.</p>
+
+                            <p>Главная сказка книги – про путешествие живой кровати, которая … нет, больше ни слова! А то получится спойлер в чистом виде.</p>
+
+                            <p>Иллюстрации к этой книге делала Ксения Седова, для неё это был первый опыт работы художником для детской книги. Меня очаровала показная мрачность в стиле средневековых басенок для детей иллюстраций Ксюши. И я подумал – а почему бы и нет? Не обязательно же всем детским книгам сверкать как празднично украшенная новогодняя ель! Пусть очаровывает своей самобытностью.</p>
+
+                            <p>Конечно же, вы можете не согласиться со мною. Но не забывайте - что перед вами сказки для маленьких волшебников. И это им решать - нравятся им иллюстрации или нет:)</p>
+                        </div>
+
+                        <div class="book-meta">
+                            <span class="meta-item"><i class="fas fa-book-open"></i> Детские сказки</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2022 г.</span>
+                            <span class="meta-item"><i class="fas fa-paint-brush"></i> Иллюстрации: Ксения Седова</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="book-meta">
-                    <span class="meta-item"><i class="fas fa-book"></i> Повесть, Философия</span>
-                    <span class="meta-item"><i class="fas fa-calendar"></i> 2019 г.</span>
-                    <span class="meta-item"><i class="fas fa-brain"></i> Бизнес-литература для всех</span>
+                <!-- Книга: Белорусская кулинарная книга в изгнании -->
+                <div class="book-detail">
+                    <div class="book-cover">
+                        <div class="cover-placeholder" style="background: linear-gradient(135deg, #D2691E, #A0522D);">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h3>Белорусская кулинарная книга в изгнании</h3>
+                        <p class="book-subtitle">Рецепты и истории о Беларуси</p>
+
+                        <div class="book-description">
+                            <p>Перед вами самая необычная из всех известных кулинарных книг. Да, в ней вы найдёте массу рецептов. Но главное блюдо в ней - любовь к родной Беларуси, к её земле, к её синим озёрам, к её большим рекам и совсем маленьким речкам, к её грибным лесам… а главное – к её людям, щедрым, радушным и очень настоящим!</p>
+
+                            <p>Это гимн культуре и национальному характеру. А в чём он проявляется лучше всего? Конечно же - в еде! В том, как готовится, как и с чем она подаётся.</p>
+
+                            <p>Книга пропитана добротой и юмором (белорусским, конечно же). В ней полно интересных исторических подробностей, слышны поговорки и песни, в которых звучат голоса наших прадедов.</p>
+
+                            <p>В книге есть мои переводы на русский язык двух потрясающих стихотворений белорусского известного поэта - Максима Танка (Яўгена Іванавіча Скурко): про противостояние старика и старой щуки, а также про ритуал забоя кабана. Я хочу, чтобы очарование строк Танка стало доступно русскоязычному читателю.</p>
+
+                            <p>Книга нежная, тёплая, смешная с грустинкой. И, конечно, очень вкусная. Наслаждайтесь! И приходите в мой кулинарный канал в ТГ @breadsalo. Я веду его немного несистемно, но с душой.</p>
+                        </div>
+
+                        <div class="book-meta">
+                            <span class="meta-item"><i class="fas fa-utensils"></i> Кулинария, Культура</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2021 г.</span>
+                            <span class="meta-item"><i class="fas fa-heart"></i> Про Беларусь с любовью</span>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Книга: Чемпион сказал -->
+                <div class="book-detail">
+                    <div class="book-cover">
+                        <div class="cover-placeholder" style="background: linear-gradient(135deg, #2c3e50, #34495e);">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h3>Чемпион сказал</h3>
+                        <p class="book-subtitle">Биография боксёра Виктора Рыбакова</p>
+
+                        <div class="book-description">
+                            <p>Эта биографическая книга написана на основе серии интервью с легендарным советским боксёром 80-х годов прошлого столетия, Виктором Григорьевичем Рыбаковым, призёром двух Олимпиад, многократным победителем чемпионатов Европы и СССР.</p>
+
+                            <p>Построенная не как мемуары, а скорее сборник историй, случаев, забавных происшествий и ярких мгновений детства, юности, спортивного и профессионального пути Рыбакова, книга читается легко и непринуждённо.</p>
+
+                            <p>Здесь нет нравоучений и посланий к читателю, зато очень много юмора и самоиронии, теплоты и житейской мудрости чемпиона. Книга написана живым языком, в формате прямой речи героя, почти без купюр и предназначена для тех, кто причастен к истории СССР и России, истории мирового спорта, прежде всего любительского бокса, конца прошлого - начала этого века.</p>
+                        </div>
+
+                        <div class="book-meta">
+                            <span class="meta-item"><i class="fas fa-user"></i> Биография, Спорт</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2020 г.</span>
+                            <span class="meta-item"><i class="fas fa-boxing-glove"></i> Про бокс и чемпионов</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Книга: Киботой -->
+                <div class="book-detail">
+                    <div class="book-cover">
+                        <div class="cover-placeholder" style="background: linear-gradient(135deg, #4db6ac, #26a69a);">
+                            <i class="fas fa-fish"></i>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h3>Киботой</h3>
+                        <p class="book-subtitle">Повесть о выборе и величии духа</p>
+
+                        <div class="book-description">
+                            <p>Эта книга для ребёнка, который живёт в каждом из нас, независимо от нашего паспортного возраста.</p>
+
+                            <p>Повесть – про выбор. Про то, как и зачем мы делаем глупости, которые потом кто-то назовёт поступком. Про то как живётся маленькому винтику в большой системе. И о роли личности в истории. Ведь дело не в размере, а в величии духа и в масштабности фигуры. Мужественными могут быть и слон, и лось, и даже маленькая рыбка, защищающая своих детей.</p>
+
+                            <p>Иногда сама судьба ставит нас перед выбором – сражаться или отступить. И тот, кто выбирает сражаться, становится героем, чьё имя овеяно славой. А тот, кто отступает, – выживает и передаёт гены мудрости своим потомкам.</p>
+
+                            <p>Герой моей повести – рачок криля Креветос проходит длинный путь к славе … и обратно. Уцелеть в невероятных испытаниях ему помогают личные качества, креативность, любовь к своему племени, готовность к самопожертвованию и любовь отца, который завещал ему самую главную ценность всей колонии криля - стратегию выживания.</p>
+
+                            <p>Так что это не просто занимательная история, а бизнес-литература в чистом виде. Пусть это и не очевидно. Можете мне поверить! Я знаю.</p>
+                        </div>
+
+                        <div class="book-meta">
+                            <span class="meta-item"><i class="fas fa-book"></i> Повесть, Философия</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2019 г.</span>
+                            <span class="meta-item"><i class="fas fa-brain"></i> Бизнес-литература для всех</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="exclusive-content" class="category-content">
+            <h2 class="section-title">Эксклюзивные материалы</h2>
+            <div class="content-wrapper">
+                <p>Эксклюзивные материалы, доступные только на этом сайте.</p>
+                <!-- Место для будущего контента -->
+            </div>
+        </section>
+
+        <section id="preparing-content" class="category-content">
+            <h2 class="section-title">Готовятся к изданию</h2>
+            <div class="content-wrapper">
+                <p>Книги, которые находятся в работе. Следите за обновлениями!</p>
+                <!-- Место для будущего контента -->
+            </div>
+        </section>
+
+        <section id="archived-content" class="category-content">
+            <h2 class="section-title">Устаревшие материалы</h2>
+            <div class="content-wrapper">
+                <p>Ранние работы и материалы, которые больше не актуальны.</p>
+                <!-- Место для будущего контента -->
+            </div>
+        </section>
+
+        <!-- Услуги -->
+        <section class="services" id="services">
+            <h2 class="section-title">Услуги</h2>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Редактура текстов</h3>
+                    <p>Помощь в подготовке рукописей к публикации</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Консультации</h3>
+                    <p>Советы начинающим авторам</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Мастер-классы</h3>
+                    <p>Онлайн и офлайн встречи</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <h3>Чтения</h3>
+                    <p>Авторские чтения для детей и взрослых</p>
+                </div>
+            </div>
+
+            <div class="services-note">
+                <p><i class="fas fa-info-circle"></i> Подробности об услугах и условиях можно обсудить индивидуально.</p>
+            </div>
+        </section>
+
+        <!-- Об авторе -->
+        <section class="about" id="about">
+            <h2 class="section-title">Об авторе</h2>
+
+            <div class="about-content">
+                <div class="author-info">
+                    <div class="author-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="author-details">
+                        <h3>Имя Автора</h3>
+                        <p class="author-tagline">Писатель, автор детских книг</p>
+                    </div>
+                </div>
+
+                <div class="author-bio">
+                    <p>Я начал писать детские книги, рассказывая истории своим сыновьям. Со временем эти рассказы превратились в полноценные книги.</p>
+
+                    <p>Верю, что хорошая книга должна быть доступна каждому. Поэтому на этом сайте я делюсь своими работами бесплатно в цифровом формате.</p>
+
+                    <p>Кроме детских сказок, пишу техническую литературу и словари для IT-специалистов.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section class="contact" id="contact">
+            <h2 class="section-title">Контакты</h2>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>author@example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-paper-plane"></i>
+                        <div>
+                            <h4>Telegram</h4>
+                            <p>@author_books</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-bookmark"></i>
+                        <div>
+                            <h4>Для СМИ</h4>
+                            <p>press@example.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-note">
+                    <p><i class="fas fa-handshake"></i> Открыт к сотрудничеству и новым проектам</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Авторские книги</h3>
+                    <p>Детские сказки и техническая литература</p>
+                    <p>Бесплатный доступ к цифровым версиям</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <a href="#">Главная</a>
+                    <a href="#published">Изданное</a>
+                    <a href="#services">Услуги</a>
+                    <a href="#about">Об авторе</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Политика</h4>
+                    <p>Все материалы защищены авторским правом</p>
+                    <p>При использовании ссылка на источник обязательна</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year">2024</span> Авторские книги. Все права защищены.</p>
+                <p class="footer-heart">Сделано с <i class="fas fa-heart"></i> для читателей</p>
             </div>
         </div>
-    </div>
-</section>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
