@@ -1121,3 +1121,118 @@ document.addEventListener('DOMContentLoaded', function() {
         text-align: center;
     }
 }
+
+/* Стили для изображений обложек - УМЕНЬШЕННЫЙ РАЗМЕР */
+.book-cover-image {
+    width: 160px; /* Уменьшили еще */
+    height: 240px; /* Пропорции 2:3 */
+    object-fit: contain;
+    background-color: #f8f4e9;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.2);
+    border: 2px solid white;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Для заглушки Ящик с ушами */
+.cover-placeholder {
+    width: 160px;
+    height: 240px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.2);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid white;
+}
+
+.cover-content {
+    text-align: center;
+    z-index: 2;
+    padding: 15px;
+}
+
+.cover-content i {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+    opacity: 0.9;
+}
+
+.cover-title {
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    max-width: 140px;
+    line-height: 1.3;
+}
+
+.book-cover {
+    float: left;
+    margin-right: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Улучшаем отображение информации о книге */
+.book-info {
+    overflow: hidden;
+    min-height: 240px; /* Минимальная высота как у обложки */
+}
+
+.book-detail h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.6rem; /* Немного уменьшили */
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.book-description p {
+    margin-bottom: 0.9rem;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Эффект при наведении */
+.book-cover-image:hover,
+.cover-placeholder:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(139, 69, 19, 0.25);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .book-cover-image,
+    .cover-placeholder {
+        width: 140px;
+        height: 210px;
+    }
+
+    .book-cover {
+        float: none;
+        margin: 0 auto 1.5rem;
+        display: block;
+    }
+
+    .cover-content i {
+        font-size: 2rem;
+    }
+
+    .cover-title {
+        font-size: 0.9rem;
+    }
+
+    .book-detail h3 {
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+    .book-info {
+        min-height: auto;
+    }
+}
