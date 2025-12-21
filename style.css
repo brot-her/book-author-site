@@ -1011,3 +1011,87 @@ document.addEventListener('DOMContentLoaded', function() {
 .book-detail:hover .cover-placeholder {
     transform: scale(1.05) !important;
 }
+
+/* Стили для изображений обложек */
+.book-cover-image {
+    width: 200px;
+    height: 300px;
+    object-fit: contain; /* Важно: contain вместо cover */
+    background-color: #f8f4e9; /* Светлый фон для PNG */
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+    border: 3px solid white;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+/* Для заглушки Ящик с ушами */
+.cover-placeholder {
+    width: 200px;
+    height: 300px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+    position: relative;
+    overflow: hidden;
+    border: 3px solid white;
+}
+
+.cover-content {
+    text-align: center;
+    z-index: 2;
+    padding: 20px;
+}
+
+.cover-content i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.cover-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    max-width: 180px;
+    line-height: 1.3;
+}
+
+.book-cover {
+    float: left;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.book-cover-image:hover,
+.cover-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(139, 69, 19, 0.4);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .book-cover-image,
+    .cover-placeholder {
+        width: 150px;
+        height: 225px;
+    }
+
+    .book-cover {
+        float: none;
+        margin: 0 auto 1.5rem;
+        display: block;
+    }
+
+    .cover-content i {
+        font-size: 3rem;
+    }
+
+    .cover-title {
+        font-size: 1rem;
+    }
+}
