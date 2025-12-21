@@ -969,3 +969,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('Сайт загружен! Авторские книги ждут своих читателей 📚');
 });
+
+/* Добавьте эти стили в конец существующего файла style.css */
+
+/* Убираем все дополнительные метаданные и подзаголовки */
+.book-meta,
+.book-subtitle,
+.meta-item {
+    display: none !important;
+}
+
+/* Убираем нижнюю границу у описания книг */
+.book-description {
+    border: none !important;
+    padding-top: 0 !important;
+}
+
+/* Увеличиваем отступы заголовков книг */
+.book-detail h3 {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Улучшаем читаемость описания */
+.book-description p {
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    color: var(--text-color);
+}
+
+/* Делаем обложки книг более заметными */
+.book-cover {
+    margin-bottom: 1.5rem !important;
+}
+
+.cover-placeholder {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.book-detail:hover .cover-placeholder {
+    transform: scale(1.05) !important;
+}
