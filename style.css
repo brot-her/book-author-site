@@ -1012,70 +1012,69 @@ document.addEventListener('DOMContentLoaded', function() {
     transform: scale(1.05) !important;
 }
 
-/* Стили для изображений обложек - УВЕЛИЧЕННЫЙ РАЗМЕР */
+/* Стили для изображений обложек - ПРАВИЛЬНЫЙ РАЗМЕР */
 .book-cover-image {
-    width: 250px; /* Увеличили с 200px */
-    height: 375px; /* Увеличили с 300px */
-    object-fit: contain; /* Показываем всю обложку */
-    background-color: #f8f4e9; /* Светлый фон */
-    border-radius: 10px; /* Увеличили радиус */
-    box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3); /* Более выраженная тень */
-    border: 4px solid white; /* Утолщенная рамка */
+    width: 180px; /* Оптимальный размер */
+    height: 270px; /* Пропорции книги 2:3 */
+    object-fit: contain;
+    background-color: #f8f4e9;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+    border: 3px solid white;
     transition: all 0.3s ease;
-    padding: 15px; /* Больше отступов */
     display: block;
 }
 
 /* Для заглушки Ящик с ушами */
 .cover-placeholder {
-    width: 250px; /* Такая же ширина как у реальных обложек */
-    height: 375px; /* Такая же высота */
-    border-radius: 10px;
+    width: 180px;
+    height: 270px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
     position: relative;
     overflow: hidden;
-    border: 4px solid white;
+    border: 3px solid white;
 }
 
 .cover-content {
     text-align: center;
     z-index: 2;
-    padding: 30px; /* Больше отступов */
+    padding: 20px;
 }
 
 .cover-content i {
-    font-size: 5rem; /* Увеличили иконку */
-    margin-bottom: 1.5rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
     opacity: 0.9;
 }
 
 .cover-title {
-    font-size: 1.4rem; /* Увеличили текст */
+    font-size: 1.1rem;
     font-weight: bold;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    max-width: 220px;
-    line-height: 1.4;
+    max-width: 160px;
+    line-height: 1.3;
 }
 
 .book-cover {
     float: left;
-    margin-right: 3rem; /* Увеличили отступ справа */
-    margin-bottom: 2rem; /* Увеличили отступ снизу */
+    margin-right: 2rem;
+    margin-bottom: 1rem;
     text-align: center;
 }
 
 /* Улучшаем отображение информации о книге */
 .book-info {
-    margin-left: 280px; /* Увеличиваем отступ слева для больших обложек */
+    overflow: hidden; /* ВАЖНО: чтобы текст обтекал обложку */
 }
 
 .book-detail h3 {
     font-family: 'Merriweather', serif;
-    font-size: 2rem; /* Увеличили заголовок */
+    font-size: 1.8rem;
     color: var(--dark-color);
     margin-bottom: 1.5rem;
     margin-top: 0;
@@ -1083,66 +1082,42 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .book-description p {
-    margin-bottom: 1.2rem;
-    line-height: 1.8;
-    font-size: 1.1rem; /* Немного увеличили текст описания */
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    font-size: 1.05rem;
     color: var(--text-color);
 }
 
 /* Эффект при наведении */
 .book-cover-image:hover,
 .cover-placeholder:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(139, 69, 19, 0.4);
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
 }
 
 /* Адаптивность для мобильных */
-@media (max-width: 992px) {
-    .book-info {
-        margin-left: 0;
-        margin-top: 2rem;
-    }
-}
-
 @media (max-width: 768px) {
     .book-cover-image,
     .cover-placeholder {
-        width: 200px; /* На мобильных немного меньше */
-        height: 300px;
+        width: 150px;
+        height: 225px;
     }
 
     .book-cover {
         float: none;
-        margin: 0 auto 2rem;
+        margin: 0 auto 1.5rem;
         display: block;
     }
 
     .cover-content i {
-        font-size: 4rem;
+        font-size: 2.5rem;
     }
 
     .cover-title {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .book-detail h3 {
-        font-size: 1.7rem;
         text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .book-cover-image,
-    .cover-placeholder {
-        width: 180px;
-        height: 270px;
-    }
-
-    .cover-content i {
-        font-size: 3.5rem;
-    }
-
-    .cover-title {
-        font-size: 1.1rem;
     }
 }
