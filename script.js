@@ -1,4 +1,5 @@
-// Основной скрипт для сайта
+// Обновленный скрипт - упрощаем навигацию
+
 document.addEventListener('DOMContentLoaded', function() {
 
     // Мобильное меню
@@ -23,19 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-
-    // Мобильное выпадающее меню
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                const dropdown = this.parentElement;
-                dropdown.classList.toggle('active');
-            }
-        });
-    });
 
     // Переключение между категориями
     const categoryLinks = document.querySelectorAll('.category-link');
@@ -78,8 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Закрытие содержимого при клике вне его
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.category-link') &&
-            !e.target.closest('.category-content') &&
-            !e.target.closest('.dropdown')) {
+            !e.target.closest('.category-content')) {
             categoryContents.forEach(content => {
                 content.classList.remove('active');
             });
@@ -121,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Подсветка активного раздела при скролле
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link, .dropdown-item');
+    const navLinks = document.querySelectorAll('.nav-link');
 
     function highlightNavLink() {
         let scrollPosition = window.scrollY + 150;
@@ -170,23 +157,6 @@ document.addEventListener('DOMContentLoaded', function() {
     yearElements.forEach(el => {
         el.textContent = new Date().getFullYear();
     });
-
-    // Анимация книг
-    const books = document.querySelectorAll('.book');
-    if (books.length > 0) {
-        setTimeout(() => {
-            books.forEach((book, index) => {
-                setTimeout(() => {
-                    book.style.transition = 'transform 0.5s ease';
-                    book.style.transform = book.style.transform.replace(/translateZ\([^)]*\)/, 'translateZ(20px)');
-
-                    setTimeout(() => {
-                        book.style.transform = book.style.transform.replace(/translateZ\([^)]*\)/, 'translateZ(10px)');
-                    }, 300);
-                }, index * 200);
-            });
-        }, 1000);
-    }
 
     console.log('Сайт загружен! Авторские книги ждут своих читателей 📚');
 });
