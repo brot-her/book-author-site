@@ -15,5 +15,7 @@
         }
       ]
     }
-  ]
+  ],
+  "buildCommand": "echo 'Building site...'",
+  "outputDirectory": "."
 }
